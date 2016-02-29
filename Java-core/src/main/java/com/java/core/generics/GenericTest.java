@@ -13,11 +13,11 @@ public class GenericTest {
      * @param clazz
      */
     public static <T extends Throwable> void doWorks(Class<T> clazz) {
-        try {
-            
-        } catch (T t) {
-            
-        }
+//        try {
+//            
+//        } catch (T t) {
+//            
+//        }
     }
     
     /**
@@ -38,7 +38,7 @@ public class GenericTest {
      * 不能声明参数化的数组，如果需收集参数化类型可直接使用集合
      */
     public static void doJobs() {
-        Pair<String>[] arr = new Pair<String>[10];
+//        Pair<String>[] arr = new Pair<String>[10];
         
     }
     
@@ -47,7 +47,7 @@ public class GenericTest {
      * @param t
      */
     public static <T extends Comparable<T>> void minmax(T[] t) {
-        T[] tt = new T[3];
+//        T[] tt = new T[3];
     }
     
     public static <T extends Comparable<? super T>> void minmax2(T[] t) {
