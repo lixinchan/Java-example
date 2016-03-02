@@ -3,6 +3,7 @@ package com.java.core.collection;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
+import java.util.Queue;
 
 /**
  * @author chenlixin at 2016年2月22日 下午2:24:03
@@ -45,5 +46,19 @@ public class LinkedListTest {
         // remove b from a
         list_a.removeAll(list_b);
         System.out.println(list_a);
+        
+        Queue<String> queue = new LinkedList<String>();
+        for(int i = 0; i < 16; i++) {
+            queue.add("a" + i);
+        }
+        System.out.println(queue);
+        queue.add("b");
+        queue.offer("c");
+        System.out.println(queue);
+        queue.remove();
+        queue.poll();
+        System.out.println(queue);
+        System.out.println(queue.peek());
+        System.out.println(queue.element());
     }
 }
