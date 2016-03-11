@@ -11,38 +11,48 @@ import java.util.TreeSet;
 
 public class Test {
 
-//    public static void main(String[] args) {
-//        
-//        // TreeSet
-//        Set<Integer> tree = new TreeSet<Integer>();
-//        long startTime_tree = System.currentTimeMillis();
-//        for(int i = 0; i < 10000000; i++){
-//            tree.add(i);
-//        }
-//        System.out.println("Tree:" + (System.currentTimeMillis() - startTime_tree));
-//        
-//        // HashSet
-//        Set<Integer> hash = new HashSet<Integer>();
-//        long startTime_hash = System.currentTimeMillis();
-//        for(int i = 0; i < 10000000; i++){
-//            hash.add(i);
-//        }
-//        System.out.println("Hash:" + (System.currentTimeMillis() - startTime_hash));
-//        
-//        // LinkedList
-//        List<Integer> link = new LinkedList<Integer>();
-//        long startTime_link = System.currentTimeMillis();
-//        for(int i = 0; i < 10000000; i++){
-//            link.add(i);
-//        }
-//        System.out.println("Link:" + (System.currentTimeMillis() - startTime_link));
-//        
-//        // ArrayList
-//        List<Integer> array = new ArrayList<Integer>();
-//        long startTime_array = System.currentTimeMillis();
-//        for(int i = 0; i < 10000000; i++){
-//            array.add(i);
-//        }
-//        System.out.println("Array:" + (System.currentTimeMillis() - startTime_array));
-//    }
+    public static void main(String[] args) {
+        //
+        // // TreeSet
+        // Set<Integer> tree = new TreeSet<Integer>();
+        // long startTime_tree = System.currentTimeMillis();
+        // for(int i = 0; i < 10000000; i++){
+        // tree.add(i);
+        // }
+        // System.out.println("Tree:" + (System.currentTimeMillis() -
+        // startTime_tree));
+        //
+        // // HashSet
+        // Set<Integer> hash = new HashSet<Integer>();
+        // long startTime_hash = System.currentTimeMillis();
+        // for(int i = 0; i < 10000000; i++){
+        // hash.add(i);
+        // }
+        // System.out.println("Hash:" + (System.currentTimeMillis() -
+        // startTime_hash));
+        //
+        // // LinkedList
+        // List<Integer> link = new LinkedList<Integer>();
+        // long startTime_link = System.currentTimeMillis();
+        // for(int i = 0; i < 10000000; i++){
+        // link.add(i);
+        // }
+        // System.out.println("Link:" + (System.currentTimeMillis() -
+        // startTime_link));
+        //
+        // // ArrayList
+        // List<Integer> array = new ArrayList<Integer>();
+        // long startTime_array = System.currentTimeMillis();
+        // for(int i = 0; i < 10000000; i++){
+        // array.add(i);
+        // }
+        // System.out.println("Array:" + (System.currentTimeMillis() -
+        // startTime_array));
+        
+        int a = 1;
+        Integer b = 1;
+        int c = 2;
+        System.out.println(a == b);
+        System.out.println(c == (a + b));
+    }
 }
