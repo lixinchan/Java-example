@@ -57,7 +57,7 @@ package com.java.core.innerclass;
 // }
 
 public class A {
-    int x = 1;
+    public int x = 1;
 
     class B {
         int x = 2;
