@@ -11,6 +11,7 @@ public class Hello {
 }
 
 class Base {
+    
     static {
          c = '0';
     }
