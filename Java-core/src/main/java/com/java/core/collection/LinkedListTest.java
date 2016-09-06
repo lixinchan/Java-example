@@ -1,5 +1,6 @@
 package com.java.core.collection;
 
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
@@ -24,7 +25,7 @@ public class LinkedListTest {
         
         // add b to a
         ListIterator<String> iter_a = list_a.listIterator();
-        ListIterator<String> iter_b = list_b.listIterator();
+        Iterator<String> iter_b = list_b.iterator();
         while(iter_b.hasNext()) {
             if(iter_a.hasNext()) 
                 iter_a.next();
@@ -33,7 +34,7 @@ public class LinkedListTest {
         System.out.println(list_a);
         
         // remove one element from b per one
-        iter_b = list_b.listIterator();
+        iter_b = list_b.iterator();
         while(iter_b.hasNext()){
             iter_b.next();
             if(iter_b.hasNext()) {
