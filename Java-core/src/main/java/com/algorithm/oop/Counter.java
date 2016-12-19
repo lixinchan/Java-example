@@ -4,7 +4,8 @@ package com.algorithm.oop;
  * @author chenlixin at 2016年12月7日 下午4:37:42
  */
 public class Counter {
-    private String id;
+    private final String id;
+    private int count;
     
     public Counter(String id) {
         this.id = id;
@@ -14,7 +15,7 @@ public class Counter {
      * counter add one
      */
     public void increment() {
-        
+        count++;
     }
     
     /**
@@ -22,7 +23,7 @@ public class Counter {
      * @return
      */
     public int tally() {
-        return 0;
+        return count;
     }
     
     @Override
