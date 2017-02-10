@@ -1,5 +1,8 @@
 package com.java.core.exception;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.text.ParseException;
 import java.util.Map;
 
@@ -8,40 +11,38 @@ import java.util.Map;
  */
 public class ExceptionChain {
 
-    // public void test() {
-    // try {
-    //
-    // } catch (Exception ex) {
-    // Throwable se = new ServletException("message");
-    // se.initCause(ex);
-    // throw se;
-    // }
-    //
-    // Throwable e = se.getCause();
-    // }
-
-    // public void test() {
-    // InputStream in = null;
-    // try {
-    // try {
-    // in = new FileInputStream("");
-    // } finally {
-    // in.close();
-    // }
-    // } catch (IOException ex) {
-    //
-    // }
-    // }
-
-    public static int test(int n) {
+    public void test1() throws Throwable {
         try {
-            int retVal = (int) Math.pow(n, n);
-            return retVal;
 
         } catch (Exception ex) {
-            return 0;
+            Throwable se = new Throwable("message");
+            se.initCause(ex);
+            throw se;
+        }
+    }
+
+    public void test2() {
+        InputStream in = null;
+        try {
+            try {
+                in = new FileInputStream("");
+            } finally {
+                in.close();
+            }
+        } catch (IOException ex) {
+
+        }
+    }
+
+    public static int test3(int n) {
+        try {
+            int retVal = (int) Math.pow(n, n);
+            int val = retVal / 0;
+            return retVal;
+        } catch (Exception ex) {
+            return 1;
         } finally {
-            if (n == 3) {
+            if (n == 4) {
                 return 0;
             }
         }
@@ -53,7 +54,7 @@ public class ExceptionChain {
         // Locale.ENGLISH);
         // Date now = sdf.parse(date);
         // System.out.println(now);
-
+        System.out.println(test3(2));
     }
 
     public static void test() {
