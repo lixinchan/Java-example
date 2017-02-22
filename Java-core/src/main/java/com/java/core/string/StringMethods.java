@@ -1,7 +1,5 @@
 package com.java.core.string;
 
-import java.util.Arrays;
-
 import org.junit.Test;
 
 /**
@@ -10,14 +8,14 @@ import org.junit.Test;
 public class StringMethods {
 
     public static void main(String[] args) {
-//        String str = "a,b,c,,";
-//        String[] array = str.split(",");
-//        System.out.println(Arrays.toString(array));
-        
+        // String str = "a,b,c,,";
+        // String[] array = str.split(",");
+        // System.out.println(Arrays.toString(array));
+
         String str = "abcdef";
         System.out.println(mystery(str));
     }
-    
+
     @Test
     public void testString() {
         String s1 = "hello";
@@ -25,14 +23,13 @@ public class StringMethods {
         s1 = "world";
         System.out.println(s1);
         System.out.println(s2);
-        
+
         String s3 = "hello world";
         s3 = s3.toUpperCase();
         s3 = s3.substring(6, 11);
         System.out.println(s3);
     }
-    
-    @Test
+
     public static String mystery(String s) {
         int len = s.length();
         if (len <= 1) {
