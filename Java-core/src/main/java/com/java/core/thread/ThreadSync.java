@@ -31,15 +31,14 @@ public class ThreadSync implements Runnable {
     /**
      * 生产者生产商品给店员
      */
-    public synchronized void product() {
+    public synchronized void producers() {
 
     }
 
     /**
      * 消费者从店员处取商品
      */
-    public synchronized void consumer() {
+    public synchronized void consumers() {
 
     }
-
 }
