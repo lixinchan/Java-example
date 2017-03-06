@@ -14,7 +14,7 @@ public class Bank {
         }
     }
 
-    public void transfer(int from, int to, double amount) {
+    public void unsynchTransfer(int from, int to, double amount) {
         System.out.print(Thread.currentThread());
         accounts[from] -= amount;
         System.out.printf(" %10.2f from %d to %d", amount, from, to);

@@ -22,7 +22,7 @@ public class TransferRunnable implements Runnable {
             try {
                 int toAccount = (int) (bank.size() * Math.random());
                 double amount = maxAmount * Math.random();
-                bank.transfer(fromAmount, toAccount, amount);
+                bank.unsynchTransfer(fromAmount, toAccount, amount);
                 Thread.sleep((long) (DELAY * Math.random()));
             } catch (InterruptedException e) {
                 // TODO Auto-generated catch block
