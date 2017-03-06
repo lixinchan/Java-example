@@ -1,9 +1,13 @@
 package com.java.core.thread.bank.unsynch;
 
+import java.util.concurrent.locks.ReentrantLock;
+
 /**
  * @author chenlixin at 2017年3月6日 下午5:41:38
  */
 public class Bank {
+
+    private ReentrantLock lock = new ReentrantLock();
 
     private final double[] accounts;
 
@@ -20,6 +24,19 @@ public class Bank {
         System.out.printf(" %10.2f from %d to %d", amount, from, to);
         accounts[to] += amount;
         System.out.println("Total balance:" + getTotalBalance());
+    }
+
+    public void synchTransfer(int from, int to, double amount) {
+        lock.lock();
+        try {
+            System.out.print(Thread.currentThread());
+            accounts[from] -= amount;
+            System.out.printf(" %10.2f from %d to %d", amount, from, to);
+            accounts[to] += amount;
+            System.out.println("Total balance:" + getTotalBalance());
+        } finally {
+            lock.unlock();
+        }
     }
 
     public double getTotalBalance() {
