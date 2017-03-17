@@ -7,7 +7,7 @@ import java.util.concurrent.locks.ReentrantLock;
  */
 public class Bank {
 
-    private ReentrantLock lock = new ReentrantLock();
+    private ReentrantLock bankLock = new ReentrantLock();
 
     private final double[] accounts;
 
@@ -27,7 +27,7 @@ public class Bank {
     }
 
     public void synchTransfer(int from, int to, double amount) {
-        lock.lock();
+        bankLock.lock();
         try {
             System.out.print(Thread.currentThread());
             accounts[from] -= amount;
@@ -35,7 +35,7 @@ public class Bank {
             accounts[to] += amount;
             System.out.println("Total balance:" + getTotalBalance());
         } finally {
-            lock.unlock();
+            bankLock.unlock();
         }
     }
 
