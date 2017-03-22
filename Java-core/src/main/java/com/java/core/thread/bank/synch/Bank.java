@@ -29,34 +29,55 @@ public class Bank {
 		System.out.println("Total balance:" + getTotalBalance());
 	}
 
-	public void synchTransfer(int from, int to, double amount) throws InterruptedException {
-		bankLock.lock();
-		try {
-			while (accounts[from] < amount) {
-				sufficientFunds.await();
-			}
-			System.out.print(Thread.currentThread());
-			accounts[from] -= amount;
-			System.out.printf(" %10.2f from %d to %d", amount, from, to);
-			accounts[to] += amount;
-			System.out.println("Total balance:" + getTotalBalance());
-			sufficientFunds.signalAll();
-		} finally {
-			bankLock.unlock();
+	// public void synchTransfer(int from, int to, double amount) throws
+	// InterruptedException {
+	// bankLock.lock();
+	// try {
+	// while (accounts[from] < amount) {
+	// sufficientFunds.await();
+	// }
+	// System.out.print(Thread.currentThread());
+	// accounts[from] -= amount;
+	// System.out.printf(" %10.2f from %d to %d", amount, from, to);
+	// accounts[to] += amount;
+	// System.out.println("Total balance:" + getTotalBalance());
+	// sufficientFunds.signalAll();
+	// } finally {
+	// bankLock.unlock();
+	// }
+	// }
+	//
+	// public double getTotalBalance() {
+	// bankLock.lock();
+	// try {
+	// double sum = 0;
+	// for (double a : accounts) {
+	// sum += a;
+	// }
+	// return sum;
+	// } finally {
+	// bankLock.unlock();
+	// }
+	// }
+
+	public synchronized void synchTransfer(int from, int to, double amount) throws InterruptedException {
+		while (accounts[from] < amount) {
+			wait();
 		}
+		System.out.print(Thread.currentThread());
+		accounts[from] -= amount;
+		System.out.printf(" %10.2f from %d to %d", amount, from, to);
+		accounts[to] += amount;
+		System.out.println("Total balance:" + getTotalBalance());
+		notifyAll();
 	}
 
-	public double getTotalBalance() {
-		bankLock.lock();
-		try {
-			double sum = 0;
-			for (double a : accounts) {
-				sum += a;
-			}
-			return sum;
-		} finally {
-			bankLock.unlock();
+	public synchronized double getTotalBalance() {
+		double sum = 0;
+		for (double a : accounts) {
+			sum += a;
 		}
+		return sum;
 	}
 
 	public int size() {
