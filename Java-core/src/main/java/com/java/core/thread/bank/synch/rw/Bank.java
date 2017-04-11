@@ -8,9 +8,9 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
  */
 public class Bank {
 
-    private ReentrantReadWriteLock rwLock;
-    private Lock readLock;
-    private Lock writeLock;
+	private ReentrantReadWriteLock rwLock;
+	private Lock readLock;
+	private Lock writeLock;
 	private final double[] accounts;
 
 	public Bank(int n, int initBalance) {
@@ -23,30 +23,30 @@ public class Bank {
 		writeLock = rwLock.writeLock();
 	}
 
-	public  void synchTransfer(int from, int to, double amount) throws InterruptedException {
-	    writeLock.lock();
-	    try {
-	        System.out.print(Thread.currentThread());
-	        accounts[from] -= amount;
-	        System.out.printf(" %10.2f from %d to %d", amount, from, to);
-	        accounts[to] += amount;
-	        System.out.println("Total balance:" + getTotalBalance());
-	    } finally {
-	        writeLock.unlock();
-	    }
+	public void synchTransfer(int from, int to, double amount) throws InterruptedException {
+		writeLock.lock();
+		try {
+			System.out.print(Thread.currentThread());
+			accounts[from] -= amount;
+			System.out.printf(" %10.2f from %d to %d", amount, from, to);
+			accounts[to] += amount;
+			System.out.println("Total balance:" + getTotalBalance());
+		} finally {
+			writeLock.unlock();
+		}
 	}
 
 	public double getTotalBalance() {
-	    readLock.lock();
-	    try {
-	        double sum = 0;
-	        for (double a : accounts) {
-	            sum += a;
-	        }
-	        return sum;
-	    } finally {
-	        readLock.unlock();
-	    }
+		readLock.lock();
+		try {
+			double sum = 0;
+			for (double a : accounts) {
+				sum += a;
+			}
+			return sum;
+		} finally {
+			readLock.unlock();
+		}
 	}
 
 	public int size() {
