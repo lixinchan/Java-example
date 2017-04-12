@@ -23,7 +23,7 @@ public class BlockingQueueTest {
         BlockingQueue<File> queue = new ArrayBlockingQueue<File>(FILE_QUEUE_SIZE);
         new Thread(new FileEnumTask(queue, new File(directory))).start();
         
-        for(int index = 0; index < 100; index++) {
+        for(int index = 0; index < SEARCH_THREAD; index++) {
             new Thread(new FileSearchTask(queue, keyWord)).start();
         }
         in.close();
