@@ -41,6 +41,10 @@ public class MatchCounter implements Callable<Integer> {
 				}
 			}
 		}
+
+		for (Future<Integer> result : results) {
+			count += result.get();
+		}
 		return count;
 	}
 
