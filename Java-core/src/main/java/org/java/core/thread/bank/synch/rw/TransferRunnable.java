@@ -1,0 +1,34 @@
+package org.java.core.thread.bank.synch.rw;
+
+/**
+ * @author chenlixin at 2017年4月6日 下午5:41:38
+ */
+public class TransferRunnable implements Runnable {
+
+    private Bank bank;
+    private int fromAmount;
+    private double maxAmount;
+    private static int DELAY = 10;
+
+    public TransferRunnable(Bank bank, int fromAmount, double maxAmount) {
+        this.bank = bank;
+        this.fromAmount = fromAmount;
+        this.maxAmount = maxAmount;
+    }
+
+    @Override
+    public void run() {
+        while (true) {
+            try {
+                int toAccount = (int) (bank.size() * Math.random());
+                double amount = maxAmount * Math.random();
+                // bank.unsynchTransfer(fromAmount, toAccount, amount);
+                bank.synchTransfer(fromAmount, toAccount, amount);
+                Thread.sleep((long) (DELAY * Math.random()));
+            } catch (InterruptedException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
+    }
+}
