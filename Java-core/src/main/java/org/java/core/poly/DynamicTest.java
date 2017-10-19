@@ -29,7 +29,7 @@ public class DynamicTest {
 	}
 
 	public static void main(String[] args) {
-		DynamicTest.Human manAsGuy = new DynamicTest.Man();// 注释1
+		DynamicTest.Human manAsGuy = new DynamicTest.Man();
 		DynamicTest.Human womanAsGuy = new DynamicTest.Woman();
 		manAsGuy.sayHello();
 		womanAsGuy.sayHello();

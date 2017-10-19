@@ -71,7 +71,6 @@ public class MixTest {
 	}
 
 	public static void main(String[] args) {
-		MixTest test = new MixTest();
 		MixTest.Human guy = new MixTest.Human();
 		MixTest.Human manAsGuy = new MixTest.Man();
 		MixTest.Man man = new MixTest.Man();
