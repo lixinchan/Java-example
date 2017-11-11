@@ -9,16 +9,21 @@ import java.util.Map;
  */
 public class LinkedHashMapTest {
 
-    public static void main(String[] args) {
-        Map<Integer, String> map = new LinkedHashMap<Integer, String>();
-        for(int index = 0; index < 10; index++) 
-            map.put(index, String.valueOf(index));
-        
-        for(int index = 0; index <10; index++)
-            System.out.println(map.get(5));
-        
-        Iterator<Integer> iter = map.keySet().iterator();
-        while(iter.hasNext())
-            System.out.println(iter.next());
-    }
+	public static void main(String[] args) {
+		Map<Integer, String> map = new LinkedHashMap<Integer, String>();
+		for (int index = 0; index < 10; index++) {
+			map.put(index, String.valueOf(index));
+		}
+
+		for (int index = 0; index < 10; index++) {
+			System.out.println(map.get(5));
+			map.remove(5);
+		}
+
+		Iterator<Integer> iter = map.keySet().iterator();
+		while (iter.hasNext()) {
+			System.out.println(iter.next());
+			iter.remove();
+		}
+	}
 }

@@ -16,10 +16,10 @@ public class ListTest {
 //		System.out.println(result);
 
 
-//		List<Integer> list = new ArrayList<Integer>(16);
-//		for (int idx = 0; idx < 10; idx++) {
-//			list.add(idx);
-//		}
+		List<Integer> list = new ArrayList<Integer>(16);
+		for (int idx = 0; idx < 10; idx++) {
+			list.add(idx);
+		}
 
 //		for (int idx = 0; idx < list.size(); idx++) {
 //			System.out.println("current element:" + list.get(idx));
@@ -31,12 +31,12 @@ public class ListTest {
 //			System.out.println(list.remove(idx));
 //		}
 
-//		Iterator<Integer> iter = list.iterator();
-//		while(iter.hasNext()) {
-//			System.out.println("current element:" + iter.next());
-//			iter.remove();
-//		}
-//		System.out.println(list.size());
+		Iterator<Integer> iter = list.iterator();
+		while(iter.hasNext()) {
+			System.out.println("current element:" + iter.next());
+			iter.remove();
+		}
+		System.out.println(list.size());
 
 //		Set<Integer> set = new HashSet<>();
 //		for (int idx = 0; idx < 10; idx++) {
