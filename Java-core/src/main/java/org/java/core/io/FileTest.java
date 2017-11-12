@@ -1,9 +1,6 @@
 package org.java.core.io;
 
-import org.apache.commons.collections.CollectionUtils;
-
 import java.io.File;
-import java.util.Collections;
 
 /**
  * @author clx 2017/11/5 21:37
