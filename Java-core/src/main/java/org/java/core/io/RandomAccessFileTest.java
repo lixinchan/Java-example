@@ -12,7 +12,7 @@ public class RandomAccessFileTest {
 
 	public static void main(String[] args) throws Exception {
 		RandomAccessFileTest test = new RandomAccessFileTest();
-//		test.initData();
+		test.initData();
 
 		test.runTest();
 	}
@@ -77,8 +77,8 @@ class Employee {
 		if (StringUtils.isNotBlank(name) && name.length() > LEN) {
 			name = StringUtils.substring(name, 0, LEN);
 		} else {
-			if (name != null && name.length() < LEN) {
-				name = name + "\u0000";
+			while (name != null && name.length() < LEN) {
+				name += "\u0000";
 			}
 		}
 		this.name = name;
