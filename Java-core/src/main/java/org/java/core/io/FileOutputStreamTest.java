@@ -16,7 +16,7 @@ public class FileOutputStreamTest {
 	private static void execTest() throws Exception {
 		File file = new File("E:" + File.separator + "test" + File.separator + "stream.txt");
 		OutputStream out = new FileOutputStream(file);
-		byte[] bytes = "HelloWorld.".getBytes();
+		byte[] bytes = "Hello World!!!".getBytes();
 		out.write(bytes);
 		out.close();
 	}
