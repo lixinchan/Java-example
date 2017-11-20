@@ -12,10 +12,14 @@ public class FileReaderTest {
 		File file = new File(fileName);
 		FileReader reader = new FileReader(file);
 		char[] buffer = new char[1024];
-		int idx = reader.read(buffer);
-		while (idx == -1) {
-			System.out.println(new String(buffer, 0, idx));
+		int idx = -1;
+		StringBuilder builder = new StringBuilder(128);
+		while ((idx = reader.read(buffer)) != -1) {
+			for(int i = 0; i < idx; i++) {
+				builder.append(buffer[i]);
+			}
 		}
 		reader.close();
+		System.out.println(builder.toString());
 	}
 }
