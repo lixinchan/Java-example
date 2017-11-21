@@ -15,7 +15,7 @@ public class FileReaderTest {
 		int idx = -1;
 		StringBuilder builder = new StringBuilder(128);
 		while ((idx = reader.read(buffer)) != -1) {
-			for(int i = 0; i < idx; i++) {
+			for (int i = 0; i < idx; i++) {
 				builder.append(buffer[i]);
 			}
 		}
