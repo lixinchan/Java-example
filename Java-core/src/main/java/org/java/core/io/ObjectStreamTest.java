@@ -13,6 +13,12 @@ public class ObjectStreamTest {
 		deserializable(file);
 	}
 
+	/**
+	 * 序列化方法
+	 *
+	 * @param file
+	 * @throws Exception
+	 */
 	public static void serializable(File file) throws Exception {
 		OutputStream out = new FileOutputStream(file);
 		ObjectOutputStream oos = new ObjectOutputStream(out);
@@ -20,6 +26,12 @@ public class ObjectStreamTest {
 		oos.close();
 	}
 
+	/**
+	 * 反序列化方法
+	 *
+	 * @param file
+	 * @throws Exception
+	 */
 	public static void deserializable(File file) throws Exception {
 		InputStream in = new FileInputStream(file);
 		ObjectInputStream ois = new ObjectInputStream(in);
