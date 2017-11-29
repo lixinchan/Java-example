@@ -1,6 +1,7 @@
 package org.java.core.io;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -14,6 +15,12 @@ public class SerializableTest implements Serializable {
 	private transient int age;
 	private static String address = "bj";
 	private List<Integer> idLists;
+
+	public SerializableTest(String name, int age, List<Integer> idLists) {
+		this.name = name;
+		this.age = age;
+		this.idLists = idLists;
+	}
 
 	public String getName() {
 		return name;
@@ -56,11 +63,25 @@ public class SerializableTest implements Serializable {
 				'}';
 	}
 
-	public static void main(String[] args) throws Exception{
+	public static void main(String[] args) throws Exception {
 		String filePath = "E:" + File.separator + "test" + File.separator + "serial.txt";
 		File file = new File(filePath);
 		OutputStream os = new FileOutputStream(file);
 		ObjectOutputStream oos = new ObjectOutputStream(os);
+		List<Integer> idLists = new ArrayList<>(16);
+		for (int idx = 0; idx < 10; idx++) {
+			idLists.add(idx);
+		}
+		SerializableTest serial = new SerializableTest("clx", 26, idLists);
+		oos.writeObject(serial);
+		oos.close();
+		os.close();
 
+		InputStream in = new FileInputStream(file);
+		ObjectInputStream ois = new ObjectInputStream(in);
+		SerializableTest test = (SerializableTest) ois.readObject();
+		System.out.println(test);
+		ois.close();
+		in.close();
 	}
 }
