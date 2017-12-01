@@ -14,9 +14,9 @@ public class SerializableTest implements Serializable {
 	private String name;
 	private transient int age;
 	private static String address = "bj";
-	private List<Integer> idLists;
+	private List<Test> idLists;
 
-	public SerializableTest(String name, int age, List<Integer> idLists) {
+	public SerializableTest(String name, int age, List<Test> idLists) {
 		this.name = name;
 		this.age = age;
 		this.idLists = idLists;
@@ -46,11 +46,11 @@ public class SerializableTest implements Serializable {
 		SerializableTest.address = address;
 	}
 
-	public List<Integer> getIdLists() {
+	public List<Test> getIdLists() {
 		return idLists;
 	}
 
-	public void setIdLists(List<Integer> idLists) {
+	public void setIdLists(List<Test> idLists) {
 		this.idLists = idLists;
 	}
 
@@ -68,10 +68,8 @@ public class SerializableTest implements Serializable {
 		File file = new File(filePath);
 		OutputStream os = new FileOutputStream(file);
 		ObjectOutputStream oos = new ObjectOutputStream(os);
-		List<Integer> idLists = new ArrayList<>(16);
-		for (int idx = 0; idx < 10; idx++) {
-			idLists.add(idx);
-		}
+		List<Test> idLists = new ArrayList<>(16);
+		idLists.add(new Test());
 		SerializableTest serial = new SerializableTest("clx", 26, idLists);
 		oos.writeObject(serial);
 		oos.close();
@@ -84,4 +82,8 @@ public class SerializableTest implements Serializable {
 		ois.close();
 		in.close();
 	}
+}
+
+class Test implements Serializable {
+
 }
