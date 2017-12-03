@@ -5,9 +5,9 @@ import java.util.Scanner;
 /**
  * @author clx 2017年9月23日 上午10:59:49
  */
-public class CaculatorBinary {
+public class CalculatorBinary {
 
-	public static int calBinaryOne(int idx) {
+	private static int calBinaryOne(int idx) {
 		int count = 0;
 		while (idx > 0) {
 			idx = idx & idx - 1;
