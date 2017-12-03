@@ -1,5 +1,7 @@
 package org.java.core.basic;
 
+import java.util.Scanner;
+
 /**
  * @author clx 2017年9月23日 上午10:59:49
  */
@@ -15,7 +17,14 @@ public class CaculatorBinary {
 	}
 
 	public static void main(String[] args) {
-		int idx = 5;
-		System.out.println(calBinaryOne(idx));
+		int idx = -1;
+		System.out.println("Please input a int number.");
+		Scanner scan = new Scanner(System.in);
+		idx = Integer.valueOf(scan.next());
+		scan.close();
+		if (idx != -1) {
+			System.out.println(calBinaryOne(idx));
+			System.out.println(Integer.toBinaryString(idx));
+		}
 	}
 }
