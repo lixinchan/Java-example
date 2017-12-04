@@ -1,8 +1,6 @@
-package org.java.core.io;
+package org.java.core.serial;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @author clx 2017/12/4 0:13

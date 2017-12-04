@@ -1,4 +1,4 @@
-package org.java.core.io;
+package org.java.core.serial;
 
 import java.io.*;
 import java.util.ArrayList;
