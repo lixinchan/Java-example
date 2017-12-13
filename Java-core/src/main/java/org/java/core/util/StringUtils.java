@@ -1,9 +1,16 @@
 package org.java.core.util;
 
 /**
+ * String utils
+ *
  * @author chenlixin at 2016年12月8日 下午3:20:32
  */
 public class StringUtils {
+
+	public static void main(String[] args) {
+		String test = "abccba";
+		System.out.println(StringUtils.isPalindrome(test));
+	}
 
 	/**
 	 * decide string is or not palindrome
@@ -13,8 +20,8 @@ public class StringUtils {
 	 */
 	public static boolean isPalindrome(String s) {
 		int len = s.length();
-		for (int index = 0; index < len / 2; index++) {
-			if (s.charAt(index) == s.charAt(len - 1 - index)) {
+		for (int idx = 0; idx < len / 2; idx++) {
+			if (s.charAt(idx) == s.charAt(len - 1 - idx)) {
 				return true;
 			}
 		}
