@@ -38,9 +38,7 @@ public class BufferTest {
 					buffer.put(element.charAt(idx));
 				}
 			}
-			if (buffer.hasRemaining()) {
-				return true;
-			}
+			return buffer.hasRemaining();
 		}
 		return false;
 	}
