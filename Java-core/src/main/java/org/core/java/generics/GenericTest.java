@@ -1,8 +1,5 @@
 package org.core.java.generics;
 
-import org.java.core.basic.Pair;
-import org.java.core.inheritance.Manager;
-
 public class GenericTest {
 
     /**
