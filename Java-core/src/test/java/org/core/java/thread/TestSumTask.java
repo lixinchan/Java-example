@@ -22,9 +22,10 @@ public class TestSumTask {
 		for (int idx = 0; idx < array.length; idx++) {
 			array[idx] = random.nextInt();
 		}
-		System.out.println(Arrays.toString(array));
 
-		ForkJoinPool forkJoinPool = new ForkJoinPool(4);
+		int availableProcessors = Runtime.getRuntime().availableProcessors();
+		System.out.println("availableProcessors:" + availableProcessors);
+		ForkJoinPool forkJoinPool = new ForkJoinPool(availableProcessors);
 		ForkJoinTask<Integer> forkJoinTask = new SumTask(array, 0, array.length);
 		long startTime = System.currentTimeMillis();
 		long result = forkJoinPool.invoke(forkJoinTask);
