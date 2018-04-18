@@ -7,7 +7,7 @@ import java.util.concurrent.RecursiveTask;
  *
  * @author clx 2018/4/17.
  */
-public class SumTask extends RecursiveTask<Long> {
+public class SumTask extends RecursiveTask<Integer> {
 
 	/**
 	 * THRESHOLD
@@ -16,7 +16,7 @@ public class SumTask extends RecursiveTask<Long> {
 	/**
 	 * array
 	 */
-	private long[] array;
+	private int[] array;
 	/**
 	 * start
 	 */
@@ -26,17 +26,17 @@ public class SumTask extends RecursiveTask<Long> {
 	 */
 	private int end;
 
-	public SumTask(long[] array, int start, int end) {
+	public SumTask(int[] array, int start, int end) {
 		this.array = array;
 		this.start = start;
 		this.end = end;
 	}
 
 	@Override
-	protected Long compute() {
+	protected Integer compute() {
 		// compute directly
 		if (end - start <= THRESHOLD) {
-			long sum = 0;
+			int sum = 0;
 			for (int idx = start; idx < end; idx++) {
 				sum += array[idx];
 			}
@@ -52,12 +52,12 @@ public class SumTask extends RecursiveTask<Long> {
 
 		// split task
 		int mid = (start + end) >>> 1;
-		System.out.println(String.format("split task %d~%d->%d%d, %d~%d", start, end, start, mid, mid, end));
+		System.out.println(String.format("split task %d~%d->%d~%d, %d~%d", start, end, start, mid, mid, end));
 		SumTask firstTask = new SumTask(array, start, mid);
-		SumTask secondTask = new SumTask(array, start, mid);
+		SumTask secondTask = new SumTask(array, mid, end);
 		invokeAll(firstTask, secondTask);
-		long firstResult = firstTask.join();
-		long secondResult = secondTask.join();
+		int firstResult = firstTask.join();
+		int secondResult = secondTask.join();
 		return firstResult + secondResult;
 	}
 }
