@@ -7,12 +7,12 @@ import java.util.Map;
 
 public class TestCompany {
 
-	public static void main(String[] args) throws IllegalAccessException,
-			InvocationTargetException, NoSuchMethodException {
+	public static void main(String[] args)
+			throws IllegalAccessException, InvocationTargetException, NoSuchMethodException {
 		Company com = new Company();
 
-		com.setName("");
-		com.getName();
+		com.setName("test");
+		System.out.println(com.getName());
 
 		// simple
 		BeanUtils.setProperty(com, "name", "Jack");
@@ -23,7 +23,7 @@ public class TestCompany {
 		BeanUtils.getProperty(com, "product[1]");
 
 		// mapped
-		HashMap am = new HashMap();
+		Map<String, String> am = new HashMap<>(10);
 		am.put("1", "10010");
 		am.put("2", "10010");
 		BeanUtils.setProperty(com, "telephone", am);

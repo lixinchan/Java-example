@@ -6,6 +6,9 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>Java-core</name>
     <description>Java-core</description>
+
+    <packaging>jar</packaging>
+
     <dependencies>
         <!-- commons -->
         <dependency>
@@ -69,7 +72,7 @@
                     <excludes>
                         <exclude>*.*</exclude>
                     </excludes>
-                    <finalName>${artifactId}-${version}</finalName>
+                    <finalName>${project.artifactId}-${project.version}</finalName>
                 </configuration>
             </plugin>
             <plugin>
