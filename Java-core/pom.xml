@@ -3,11 +3,33 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.java.core</groupId>
     <artifactId>Java-core</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>${project.version.name}</version>
     <name>Java-core</name>
-    <description>Java-core</description>
 
+    <description>Java-core</description>
     <packaging>jar</packaging>
+
+    <developers>
+        <developer>
+            <name>clx</name>
+            <email>brianchen.clx@gmail.com</email>
+        </developer>
+    </developers>
+
+    <profiles>
+        <profile>
+            <id>release</id>
+            <properties>
+                <project.version.name>0.01</project.version.name>
+            </properties>
+        </profile>
+        <profile>
+            <id>snapshot</id>
+            <properties>
+                <project.version.name>0.01-SNAPSHOT</project.version.name>
+            </properties>
+        </profile>
+    </profiles>
 
     <dependencies>
         <!-- commons -->
@@ -90,4 +112,17 @@
             </plugin>
         </plugins>
     </build>
+
+    <distributionManagement>
+        <snapshotRepository>
+            <id>nexus-snapshot</id>
+            <name>nexus-snapshot-central</name>
+            <url>http://repo1.maven.org/maven2/</url>
+        </snapshotRepository>
+        <repository>
+            <id>nexus-release</id>
+            <name>nexus-central</name>
+            <url>http://repo1.maven.org/maven2/</url>
+        </repository>
+    </distributionManagement>
 </project>
