@@ -113,7 +113,21 @@
         </plugins>
     </build>
 
-    <distributionManagement>
+    <repositories>
+        <repository>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <id>nexus</id>
+            <name>nexus-central</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+        </repository>
+    </repositories>
+
+    <!--<distributionManagement>
         <snapshotRepository>
             <id>nexus-snapshot</id>
             <name>nexus-snapshot-central</name>
@@ -124,5 +138,5 @@
             <name>nexus-central</name>
             <url>http://repo1.maven.org/maven2/</url>
         </repository>
-    </distributionManagement>
+    </distributionManagement>-->
 </project>
