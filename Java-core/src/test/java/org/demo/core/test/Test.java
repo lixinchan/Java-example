@@ -2,6 +2,8 @@ package org.demo.core.test;
 
 import static java.util.stream.Collectors.toList;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -17,5 +19,10 @@ public class Test {
 		List<Double> sortedVals = new ArrayList<>(Arrays.asList(array)).stream().filter(Objects::nonNull).sorted()
 				.collect(toList());
 		sortedVals.forEach(System.out::println);
+
+		LocalDateTime now = LocalDateTime.now();
+		DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss");
+		String nowStr = now.format(format);
+		System.out.println(nowStr);
 	}
 }
