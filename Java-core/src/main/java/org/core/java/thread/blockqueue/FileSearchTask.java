@@ -16,7 +16,7 @@ public class FileSearchTask implements Runnable {
     private BlockingQueue<File> queue;
     private String keyWord;
     
-    public  FileSearchTask(BlockingQueue<File> queue, String keyWord) {
+	public FileSearchTask(BlockingQueue<File> queue, String keyWord) {
         this.queue = queue;
         this.keyWord = keyWord;
     }
@@ -31,7 +31,7 @@ public class FileSearchTask implements Runnable {
                     queue.put(file);
                     done = true;
                 } else {
-                    this.search(file);
+					this.search(file);
                 }
             }
         } catch (InterruptedException | FileNotFoundException e) {
