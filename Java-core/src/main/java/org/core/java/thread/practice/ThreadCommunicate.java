@@ -1,6 +1,6 @@
 package org.core.java.thread.practice;
 
-import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.*;
 
 /**
  * @author clx 2018/5/24
@@ -10,8 +10,42 @@ public class ThreadCommunicate {
 	public static void main(String[] args) {
 		// demo();
 		// demo1();
-		// demo2();
-		demo3();
+		demo2();
+		// demo3();
+		// demo4();
+	}
+
+	private static void demo4() {
+		int worker = 3;
+		CyclicBarrier cyclicBarrier = new CyclicBarrier(worker);
+		for (char threadName = 'A'; threadName <= 'C'; threadName++) {
+			String name = String.valueOf(threadName);
+			new Thread(new Runnable() {
+				@Override
+				public void run() {
+					try {
+						Thread.sleep(1000);
+					} catch (InterruptedException ex) {
+						ex.printStackTrace();
+					}
+					try {
+						System.out.println(name + " is preparing.");
+						cyclicBarrier.await();
+						System.out.println(name + " is prepared.");
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					} catch (BrokenBarrierException e) {
+						e.printStackTrace();
+					}
+				}
+			}).start();
+		}
+		new Thread(new Runnable() {
+			@Override
+			public void run() {
+				System.out.println("D is working.");
+			}
+		}).start();
 	}
 
 	private static void demo3() {
@@ -75,6 +109,20 @@ public class ThreadCommunicate {
 				}
 			}
 		});
+
+		synchronized (ThreadCommunicate.class) {
+			a.start();
+			try {
+				ThreadCommunicate.class.wait(10);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+		synchronized (ThreadCommunicate.class) {
+			ThreadCommunicate.class.notify();
+			b.start();
+		}
+
 	}
 
 	private static void demo1() {
