@@ -16,14 +16,9 @@ public class BufferTest {
 		}
 	}
 
-	private static String[] array = new String[]{
-			"A random string value",
-			"The product of an infinite number of monkeys",
-			"Hey hey we're the monkeys",
-			"Opening act for the monkeys:Jack Hendrix",
-			"Scuse me while I kiss this fly",
-			"Help Me! Help Me!"
-	};
+	private static String[] array = new String[] { "A random string value",
+			"The product of an infinite number of monkeys", "Hey hey we're the monkeys",
+			"Opening act for the monkeys:Jack Hendrix", "Scuse me while I kiss this fly", "Help Me! Help Me!" };
 
 	/**
 	 * fill buffer
