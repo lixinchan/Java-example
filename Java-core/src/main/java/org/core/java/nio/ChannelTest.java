@@ -2,6 +2,8 @@ package org.core.java.nio;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
+import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
 
 /**
@@ -10,15 +12,30 @@ import java.nio.channels.FileChannel;
 public class ChannelTest {
 
 	public static void main(String[] args) {
+		FileInputStream inputStream = null;
 		try {
-			FileInputStream inputStream = new FileInputStream(new File("E:\\test\\serial.txt"));
+			inputStream = new FileInputStream(new File("E:\\test\\serial.txt"));
 			FileChannel channel = inputStream.getChannel();
 			if (channel.isOpen()) {
+				ByteBuffer buffer = ByteBuffer.allocate(256);
+				channel.read(buffer);
+				buffer.flip();
+				while (buffer.hasRemaining()) {
+					System.out.print((char) buffer.get());
+				}
+				buffer.clear();
 				channel.close();
-				System.out.println("File channel closed.");
 			}
 		} catch (Exception ex) {
 			ex.printStackTrace();
+		} finally {
+			if (inputStream != null) {
+				try {
+					inputStream.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
 		}
 	}
 }
