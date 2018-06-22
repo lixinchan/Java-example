@@ -14,6 +14,12 @@ public class OptionalTest {
 		System.out.println(test.newOfNullable(user));
 	}
 
+	/**
+	 * new Nullable
+	 * 
+	 * @param user
+	 * @return
+	 */
 	private String newOfNullable(User user) {
 		// User newUser = null;
 		// newUser = Optional.of(user).orElse(createUser());
@@ -23,6 +29,17 @@ public class OptionalTest {
 
 		return Optional.ofNullable(user).map(u -> u.getAddress()).map(a -> a.getProvince())
 				.orElseThrow(() -> new IllegalArgumentException());
+	}
+
+	/**
+	 * get province
+	 * 
+	 * @param user
+	 * @return
+	 */
+	private String getProvince(User user) {
+		return Optional.ofNullable(user).map(User::getAddress).map(Address::getProvince)
+				.orElseThrow(IllegalArgumentException::new);
 	}
 
 	/**
@@ -43,6 +60,8 @@ public class OptionalTest {
 		Optional.ofNullable(user).ifPresent(u -> {
 			u.getAddress();
 		});
+
+		Optional.ofNullable(user).ifPresent(User::getAddress);
 		return null;
 	}
 
