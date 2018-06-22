@@ -1,10 +1,10 @@
 package org.core.java.collection;
 
-import org.apache.commons.lang3.StringUtils;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import org.apache.commons.lang3.StringUtils;
 
 /**
  * test list's new features
@@ -63,10 +63,7 @@ public class ListNewFeaturesTest {
 
 		@Override
 		public String toString() {
-			return "Person{" +
-					"id=" + id +
-					", name='" + name + '\'' +
-					'}';
+			return "Person{" + "id=" + id + ", name='" + name + '\'' + '}';
 		}
 	}
 

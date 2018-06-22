@@ -21,10 +21,11 @@ public class OptionalTest {
 	 * @return
 	 */
 	private String newOfNullable(User user) {
-		// User newUser = null;
+		User newUser = null;
 		// newUser = Optional.of(user).orElse(createUser());
 		// User result = Optional.ofNullable(user).orElse(createUser());
 		// newUser = Optional.ofNullable(user).orElseGet(() -> createUser());
+		newUser = Optional.ofNullable(user).orElseGet(this::createUser);
 		// return result.getName();
 
 		return Optional.ofNullable(user).map(u -> u.getAddress()).map(a -> a.getProvince())
@@ -107,12 +108,22 @@ public class OptionalTest {
 }
 
 class User {
+
+	private static Long id;
 	private String name;
 	private String phone;
 	private Address address;
 
 	public User() {
 		System.out.println("I'm Running...");
+	}
+
+	public static Long getId() {
+		return id;
+	}
+
+	public static void setId(Long id) {
+		User.id = id;
 	}
 
 	public String getName() {
