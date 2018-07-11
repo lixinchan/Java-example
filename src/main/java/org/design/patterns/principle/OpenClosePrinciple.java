@@ -12,39 +12,105 @@ public class OpenClosePrinciple {
 /**
  * before refactor
  */
+// class ChartDisplay {
+//
+// /**
+// * display chart
+// *
+// * @param type
+// */
+// void display(String type) {
+// if (type.equals("")) {
+// PipChart pipChart = new PipChart();
+// pipChart.display();
+// }
+// if (type.equals("")) {
+// BarChart barChart = new BarChart();
+// barChart.display();
+// }
+// }
+// }
+
+/**
+ * before refactor
+ */
+// class PipChart {
+//
+// /**
+// * display
+// */
+// void display() {
+//
+// }
+// }
+
+/**
+ * before refactor
+ */
+// class BarChart {
+//
+// /**
+// * display
+// */
+// void display() {
+//
+// }
+// }
+
+/**
+ * after refactor
+ */
 class ChartDisplay {
 
 	/**
-	 * display chart
+	 * abstract ChartDisplay
+	 */
+	private AbstractChartDisplay chartDisplay;
+
+	/**
+	 * set chart display
 	 * 
-	 * @param type
+	 * @param chartDisplay
 	 */
-	void display(String type) {
+	public void setChartDisplay(AbstractChartDisplay chartDisplay) {
+		this.chartDisplay = chartDisplay;
 	}
-}
-
-/**
- * before refactor
- */
-class PipChart {
 
 	/**
 	 * display
 	 */
-	void display() {
+	public void display() {
+		chartDisplay.display();
+	}
+
+}
+
+/**
+ * after refactor
+ */
+abstract class AbstractChartDisplay {
+	/**
+	 * abstract display
+	 */
+	protected abstract void display();
+}
+
+/**
+ * after refactor
+ */
+class PipChart extends AbstractChartDisplay {
+	@Override
+	protected void display() {
 
 	}
 }
 
 /**
- * before refactor
+ * after refactor
  */
-class BarChart {
-
-	/**
-	 * display
-	 */
-	void display() {
+class BarChart extends AbstractChartDisplay {
+	@Override
+	protected void display() {
 
 	}
 }
