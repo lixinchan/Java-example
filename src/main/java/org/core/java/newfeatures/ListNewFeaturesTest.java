@@ -1,4 +1,4 @@
-package org.core.java.collection;
+package org.core.java.newfeatures;
 
 import java.util.ArrayList;
 import java.util.List;
