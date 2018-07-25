@@ -6,5 +6,46 @@ package org.design.patterns.principle;
  * @author clx 2018/7/23
  */
 public class InterfaceSegregationPrinciple {
-	
+
+	interface DataHelper {
+		/**
+		 * data read
+		 */
+		void dataRead();
+	}
+
+	interface ChartHelper {
+		/**
+		 * display chart
+		 */
+		void displayChart();
+	}
+
+	interface ReportHelper {
+		/**
+		 * display report
+		 */
+		void dispalyReport();
+	}
+}
+
+/**
+ * before refactor
+ */
+interface ConsumerDataDisplay {
+
+	/**
+	 * data read
+	 */
+	void dataRead();
+
+	/**
+	 * display chart
+	 */
+	void displayChart();
+
+	/**
+	 * display report
+	 */
+	void dispalyReport();
 }
