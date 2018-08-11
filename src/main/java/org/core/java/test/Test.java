@@ -15,7 +15,10 @@ public class Test {
 		List<Integer> result = new ArrayList<>();
 		split(result, first, second);
 		Collections.sort(result);
-		result.forEach(System.out::print);
+		result.forEach(System.out::println);
+
+		Integer[] array = new Integer[] { 12, 13, 51, 2, 5 };
+		System.out.println(Test.max(array));
 	}
 
 	private static void split(List<Integer> result, int... allNum) {
@@ -33,5 +36,18 @@ public class Test {
 			result.add(ele);
 		}
 		return num / 10;
+	}
+
+	public static <T extends Comparable<? super T>> T max(T[] array) {
+		if (array == null || array.length == 0) {
+			return null;
+		}
+		T max = array[0];
+		for (int idx = 1; idx < array.length; idx++) {
+			if (max.compareTo(array[idx]) < 0) {
+				max = array[idx];
+			}
+		}
+		return max;
 	}
 }
