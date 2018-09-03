@@ -1,6 +1,8 @@
 package org.core.java.io;
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author clx 2017/11/26 23:53
@@ -22,7 +24,11 @@ public class ObjectStreamTest {
 	public static void serializable(File file) throws Exception {
 		OutputStream out = new FileOutputStream(file);
 		ObjectOutputStream oos = new ObjectOutputStream(out);
-		oos.writeObject(new Person("clx", 27));
+		List<String> address = new ArrayList<>();
+		address.add("1.");
+		address.add("2.");
+		address.add("3.");
+		oos.writeObject(new Person("clx", 27, address));
 		oos.close();
 	}
 
@@ -46,17 +52,16 @@ class Person implements Serializable {
 	private transient String name;
 	private int age;
 	private final static String GENDER = "man";
+	private List<String> address;
 
-	public Person(String name, int age) {
+	public Person(String name, int age, List<String> address) {
 		this.name = name;
 		this.age = age;
+		this.address = address;
 	}
 
 	@Override
 	public String toString() {
-		return "Person{" +
-				"name='" + name + '\'' +
-				", age=" + age +
-				'}';
+		return "Person{" + "name='" + name + '\'' + ", age=" + age + ", address=" + address + '}';
 	}
 }
