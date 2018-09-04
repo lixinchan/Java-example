@@ -28,8 +28,13 @@ public class ObjectStreamTest {
 		address.add("1.");
 		address.add("2.");
 		address.add("3.");
-		oos.writeObject(new Person("clx", 27, address));
+		Person person = new Person("clx", 27, address);
+		oos.writeObject(person);
+		oos.flush();
+		System.out.println("1:" + file.length());
+		oos.writeObject(person);
 		oos.close();
+		System.out.println("2:" + file.length());
 	}
 
 	/**
@@ -41,18 +46,28 @@ public class ObjectStreamTest {
 	public static void deserializable(File file) throws Exception {
 		InputStream in = new FileInputStream(file);
 		ObjectInputStream ois = new ObjectInputStream(in);
-		Person person = (Person) ois.readObject();
-		System.out.println(person);
+		Person person1 = (Person) ois.readObject();
+		System.out.println(person1);
+		Person person2 = (Person) ois.readObject();
+		System.out.println(person2);
+		System.out.println(person1 == person2);
+		in.close();
 	}
 
 }
 
 class Person implements Serializable {
 
+	private static final long serialVersionUID = 1L;
+
 	private transient String name;
 	private int age;
 	private final static String GENDER = "man";
 	private List<String> address;
+
+	public Person() {
+
+	}
 
 	public Person(String name, int age, List<String> address) {
 		this.name = name;
