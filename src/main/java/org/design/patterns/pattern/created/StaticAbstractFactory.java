@@ -21,7 +21,7 @@ public class StaticAbstractFactory {
  * staff factory
  */
 class StaffFactory {
-	private final static Logger logger = LoggerFactory.getLogger(StaticAbstractFactory.class);
+	private final static Logger logger = LoggerFactory.getLogger(StaffFactory.class);
 
 	public static Staff getStaff(String staffClasspath) {
 		if (staffClasspath == null || staffClasspath.length() == 0) {
