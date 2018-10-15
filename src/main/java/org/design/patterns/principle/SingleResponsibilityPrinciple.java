@@ -8,7 +8,7 @@ import java.util.List;
  * 
  * @author clx 2018/7/8
  */
-public class SingleResponsibility {
+public class SingleResponsibilityPrinciple {
 
 }
 
@@ -43,7 +43,7 @@ interface CustomerDao {
 /**
  * after refactor
  */
-class DBUtils {
+class DbUtils {
 
 	/**
 	 * get db connection
