@@ -1,6 +1,8 @@
 package org.design.patterns.pattern.created;
 
 /**
+ * singleton pattern
+ * 
  * @author clx 2018/10/21
  */
 public class Singleton {
