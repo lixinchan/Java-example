@@ -1,5 +1,9 @@
 package org.design.patterns.pattern.structural;
 
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
+import java.lang.reflect.Proxy;
+
 import org.apache.commons.lang3.StringUtils;
 
 /**
@@ -8,8 +12,19 @@ import org.apache.commons.lang3.StringUtils;
 public class ProxyPattern {
 
 	public static void main(String[] args) {
+		// static proxy test
 		StaticAbstractObject abstractObject = new StaticProxyObject();
 		System.out.println(new StaticProxy(abstractObject).getTitle("google.com"));
+
+		// dynamic proxy test
+		new ProxyPattern().testDynamicProxy();
+	}
+
+	public void testDynamicProxy() {
+		InvocationHandler handler = new DynamicProxy(new StaticProxyObject());
+		StaticAbstractObject proxy = (StaticAbstractObject) Proxy.newProxyInstance(this.getClass().getClassLoader(),
+				new Class[] { StaticAbstractObject.class }, handler);
+		System.out.println(proxy.getTitle("google.com"));
 	}
 }
 
@@ -52,5 +67,21 @@ class StaticProxy implements StaticAbstractObject {
 	@Override
 	public String getTitle(String url) {
 		return abstractObject.getTitle(url);
+	}
+}
+
+class DynamicProxy implements InvocationHandler {
+
+	private Object object;
+
+	public DynamicProxy(Object object) {
+		this.object = object;
+	}
+
+	@Override
+	public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+		StringBuilder builder = new StringBuilder(32);
+		builder.append(method.invoke(object, args));
+		return builder.toString();
 	}
 }
