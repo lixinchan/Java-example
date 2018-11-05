@@ -1,12 +1,15 @@
 package org.design.patterns.pattern.structural;
 
+import org.apache.commons.lang3.StringUtils;
+
 /**
  * @author clx 2018/11/2
  */
 public class ProxyPattern {
 
 	public static void main(String[] args) {
-
+		StaticAbstractObject abstractObject = new StaticProxyObject();
+		System.out.println(new StaticProxy(abstractObject).getTitle("google.com"));
 	}
 }
 
@@ -31,6 +34,9 @@ class StaticProxyObject implements StaticAbstractObject {
 
 	@Override
 	public String getTitle(String url) {
+		if (StringUtils.equals(url, "google.com")) {
+			return "google";
+		}
 		return null;
 	}
 }
@@ -45,6 +51,6 @@ class StaticProxy implements StaticAbstractObject {
 
 	@Override
 	public String getTitle(String url) {
-		return null;
+		return abstractObject.getTitle(url);
 	}
 }
