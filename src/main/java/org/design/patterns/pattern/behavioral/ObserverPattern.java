@@ -2,6 +2,9 @@ package org.design.patterns.pattern.behavioral;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Observable;
+
+import org.apache.commons.lang3.StringUtils;
 
 /**
  * @author clx 2018/11/6
@@ -10,6 +13,7 @@ public class ObserverPattern {
 
 	public static void main(String[] args) {
 		new ObserverPattern().testObserver();
+		new ObserverPattern().testJDKObserver();
 	}
 
 	/**
@@ -22,6 +26,18 @@ public class ObserverPattern {
 		subject.addObserver(observer);
 		// change state
 		subject.change("new State.");
+	}
+
+	/**
+	 * test Observable
+	 */
+	private void testJDKObserver() {
+		OwnSubject subject = new OwnSubject();
+		java.util.Observer observer = new OwnObserver();
+		subject.addObserver(observer);
+		subject.setData("start");
+		subject.setData("running");
+		subject.setData("stop");
 	}
 }
 
@@ -122,5 +138,43 @@ class ConcreteObserver implements Observer {
 	public void update(String state) {
 		this.observerState = state;
 		System.out.println("state changed:" + this.observerState);
+	}
+}
+
+/**
+ * concrete subject
+ */
+class OwnSubject extends Observable {
+
+	private String data = "";
+
+	public String getData() {
+		return data;
+	}
+
+	public void setData(String data) {
+		if (StringUtils.isNotBlank(data)) {
+			this.data = data;
+			super.setChanged();
+		}
+		super.notifyObservers();
+	}
+}
+
+/**
+ * concrete observer
+ */
+class OwnObserver implements java.util.Observer {
+
+	private String data;
+
+	public String getData() {
+		return data;
+	}
+
+	@Override
+	public void update(Observable o, Object arg) {
+		this.data = ((OwnSubject) o).getData();
+		System.out.println("state changed:" + this.data);
 	}
 }
