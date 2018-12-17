@@ -1,4 +1,4 @@
-package org.vm;
+package org.vm.automemorymanagement;
 
 import java.lang.reflect.Field;
 
