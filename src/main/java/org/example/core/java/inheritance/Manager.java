@@ -1,23 +1,28 @@
 package org.example.core.java.inheritance;
 
+/**
+ * @author clx
+ */
 public class Manager extends Employee {
 
-    private double bouns;
+	/**
+	 * bonus
+	 */
+	private double bonus;
 
-    public Manager(double bouns) {
-        this.bouns = bouns;
-    }
+	public Manager(double bonus) {
+		this.bonus = bonus;
+	}
 
-    public double getBouns() {
-        return bouns;
-    }
+	public double getBonus() {
+		return bonus;
+	}
 
-    public void setBouns(double bouns) {
-        this.bouns = bouns;
-    }
+	public void setBonus(double bonus) {
+		this.bonus = bonus;
+	}
 
-    protected double getSalary(double salary, double bouns) {
-        return salary + bouns;
-    }
-
+	protected double getSalary(double salary, double bonus) {
+		return salary + bonus;
+	}
 }

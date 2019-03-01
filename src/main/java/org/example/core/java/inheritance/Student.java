@@ -5,18 +5,16 @@ package org.example.core.java.inheritance;
  */
 public class Student extends Person {
 
-    public Student() {
+	public Student() {
 
-    }
+	}
 
-    public Student(String name) {
-        super(name);
-    }
+	public Student(String name) {
+		super(name);
+	}
 
-    @Override
-    public String getDesc() {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
+	@Override
+	public String getDesc() {
+		return null;
+	}
 }
