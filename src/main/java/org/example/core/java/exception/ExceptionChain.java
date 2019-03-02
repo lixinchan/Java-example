@@ -37,7 +37,7 @@ public class ExceptionChain {
     public static int test3(int n) {
         try {
             int retVal = (int) Math.pow(n, n);
-            int val = retVal / 0;
+            int val = retVal / 1;
             return retVal;
         } catch (Exception ex) {
             return 1;
