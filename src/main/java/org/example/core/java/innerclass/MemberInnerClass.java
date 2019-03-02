@@ -22,7 +22,6 @@ public class MemberInnerClass {
 
 	public class PublicInner {
 		private int idx = 2;
-
 		public void printIdx() {
 			System.out.println(idx);
 		}
