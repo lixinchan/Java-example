@@ -6,65 +6,72 @@ import java.util.*;
  * @author clx at 2017年3月29日 下午5:29:48
  */
 public class ListTest {
+
 	public static void main(String[] args) {
-//		Result result = new Result();
-//		List<String> list = new ArrayList<String>();
-//		result.setResult(list);
-//		for (int index = 0; index < 5; index++) {
-//			list.add("H");
-//		}
-//		System.out.println(result);
+		Result result = new Result();
+		List<String> strings = new ArrayList<>();
+		result.setResult(strings);
+		for (int index = 0; index < 5; index++) {
+			strings.add("H");
+		}
+		System.out.println(result);
 
-
-		List<Integer> list = new ArrayList<Integer>(16);
+		List<Integer> integers = new ArrayList<>(16);
 		for (int idx = 0; idx < 10; idx++) {
-			list.add(idx);
+			integers.add(idx);
 		}
 
-//		for (int idx = 0; idx < list.size(); idx++) {
-//			System.out.println("current element:" + list.get(idx));
-//			System.out.println("deleted element:" + list.remove(idx));
-//		}
+		for (int idx = 0; idx < integers.size(); idx++) {
+			System.out.println("current element:" + integers.get(idx));
+			System.out.println("deleted element:" + integers.remove(idx));
+		}
 
-//		for (Integer idx : list) {
-//			System.out.println(idx);
-//			System.out.println(list.remove(idx));
-//		}
+		// wrongRemove(integers);
 
-		Iterator<Integer> iter = list.iterator();
-		while(iter.hasNext()) {
+		Iterator<Integer> iter = integers.iterator();
+		while (iter.hasNext()) {
 			System.out.println("current element:" + iter.next());
 			iter.remove();
 		}
-		System.out.println(list.size());
+		System.out.println(integers.size());
 
-//		Set<Integer> set = new HashSet<>();
-//		for (int idx = 0; idx < 10; idx++) {
-//			set.add(idx);
-//		}
+		Set<Integer> set = new HashSet<>();
+		for (int idx = 0; idx < 10; idx++) {
+			set.add(idx);
+		}
 
-//		Iterator<Integer> iter = set.iterator();
-//		while(iter.hasNext()) {
-//			System.out.println(iter.next());
-//		}
-
-
-	}
-}
-
-class Result {
-	private List<String> result;
-
-	public List<String> getResult() {
-		return result;
+		Iterator<Integer> iterator = set.iterator();
+		while (iterator.hasNext()) {
+			System.out.println(iterator.next());
+		}
 	}
 
-	public void setResult(List<String> result) {
-		this.result = result;
+	/**
+	 * wrong way to remove collection element
+	 * 
+	 * @param integers
+	 */
+	private static void wrongRemove(List<Integer> integers) {
+		for (Integer idx : integers) {
+			System.out.println(idx);
+			System.out.println(integers.remove(idx));
+		}
 	}
 
-	@Override
-	public String toString() {
-		return "Result [result=" + result + "]";
+	static class Result {
+		private List<String> result;
+
+		public List<String> getResult() {
+			return result;
+		}
+
+		public void setResult(List<String> result) {
+			this.result = result;
+		}
+
+		@Override
+		public String toString() {
+			return "Result [result=" + result + "]";
+		}
 	}
 }

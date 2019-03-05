@@ -17,7 +17,7 @@ public class WeakHashMapTest {
 
 class Person {
     private String giveName;
-    private String fimalyName;
+    private String familyName;
     private String mobile;
 
     public String getGiveName() {
@@ -28,12 +28,12 @@ class Person {
         this.giveName = giveName;
     }
 
-    public String getFimalyName() {
-        return fimalyName;
+    public String getFamilyName() {
+        return familyName;
     }
 
-    public void setFimalyName(String fimalyName) {
-        this.fimalyName = fimalyName;
+    public void setFamilyName(String familyName) {
+        this.familyName = familyName;
     }
 
     public String getMobile() {
@@ -46,7 +46,7 @@ class Person {
 
     @Override
     public String toString() {
-        return "Person [giveName=" + giveName + ", fimalyName=" + fimalyName
+        return "Person [giveName=" + giveName + ", familyName=" + familyName
                 + ", mobile=" + mobile + "]";
     }
 }
