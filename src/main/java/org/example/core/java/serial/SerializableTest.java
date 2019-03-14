@@ -56,15 +56,11 @@ public class SerializableTest implements Serializable {
 
 	@Override
 	public String toString() {
-		return "SerializableTest{" +
-				"name='" + name + '\'' +
-				", age=" + age +
-				", idLists=" + idLists +
-				'}';
+		return "SerializableTest{" + "name='" + name + '\'' + ", age=" + age + ", idLists=" + idLists + '}';
 	}
 
 	public static void main(String[] args) throws Exception {
-		String filePath = "E:" + File.separator + "test" + File.separator + "serial.txt";
+		String filePath = "G:" + File.separator + "test" + File.separator + "serial.txt";
 		File file = new File(filePath);
 		OutputStream os = new FileOutputStream(file);
 		ObjectOutputStream oos = new ObjectOutputStream(os);
@@ -82,8 +78,7 @@ public class SerializableTest implements Serializable {
 		ois.close();
 		in.close();
 	}
-}
 
-class Test implements Serializable {
-
+	private static class Test implements Serializable {
+	}
 }
