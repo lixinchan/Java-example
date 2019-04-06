@@ -11,61 +11,71 @@ import java.util.Map;
  */
 public class ExceptionChain {
 
-    public void test1() throws Throwable {
-        try {
+	public void test1() throws Throwable {
+		try {
 
-        } catch (Exception ex) {
-            Throwable se = new Throwable("message");
-            se.initCause(ex);
-            throw se;
-        }
-    }
+		} catch (Exception ex) {
+			Throwable se = new Throwable("message");
+			se.initCause(ex);
+			throw se;
+		}
+	}
 
-    public void test2() {
-        InputStream in = null;
-        try {
-            try {
-                in = new FileInputStream("");
-            } finally {
-                in.close();
-            }
-        } catch (IOException ex) {
+	public void test2() {
+		InputStream in = null;
+		try {
+			try {
+				in = new FileInputStream("");
+			} finally {
+				in.close();
+			}
+		} catch (IOException ex) {
 
-        }
-    }
+		}
+	}
 
-    public static int test3(int n) {
-        try {
-            int retVal = (int) Math.pow(n, n);
-            int val = retVal / 1;
-            return retVal;
-        } catch (Exception ex) {
-            return 1;
-        } finally {
-            if (n == 4) {
-                return 0;
-            }
-        }
-    }
+	public static int test3(int n) {
+		try {
+			int retVal = (int) Math.pow(n, n);
+			int val = retVal / 1;
+			return retVal;
+		} catch (Exception ex) {
+			return 1;
+		} finally {
+			if (n == 4) {
+				return 0;
+			}
+		}
+	}
 
-    public static void main(String[] args) throws ParseException {
-        // String date = "July 28 2015";
-        // SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd",
-        // Locale.ENGLISH);
-        // Date now = sdf.parse(date);
-        // System.out.println(now);
-        System.out.println(test3(2));
-    }
+	public static void main(String[] args) throws ParseException {
+		// String date = "July 28 2015";
+		// SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd",
+		// Locale.ENGLISH);
+		// Date now = sdf.parse(date);
+		// System.out.println(now);
+		// System.out.println(test3(2));
 
-    public static void test() {
-        Throwable e = new Throwable();
-        StackTraceElement[] element = e.getStackTrace();
-        for (StackTraceElement frame : element) {
+		System.out.println(Long.toBinaryString(255));
+		System.out.println(Long.toBinaryString(System.currentTimeMillis() / 1000));
+		System.out.println(Long.toBinaryString((System.currentTimeMillis() / 1000) << 20));
+		System.out.println(Long.toBinaryString(((System.currentTimeMillis() / 1000) << 20) | (4095 << 12)));
+		System.out
+				.println(Long.toBinaryString(((System.currentTimeMillis() / 1000) << 20) | (4095 << 12) | (255 << 8)));
 
-        }
-        Map<Thread, StackTraceElement[]> stackMap = Thread.getAllStackTraces();
-        for (Thread t : stackMap.keySet()) {
-            StackTraceElement[] frames = stackMap.get(t);
-        }
-    }
+		System.out.println(System.currentTimeMillis() / 1000);
+		System.out.println((System.currentTimeMillis() / 1000) % 3600);
+	}
+
+	public static void test() {
+		Throwable e = new Throwable();
+		StackTraceElement[] element = e.getStackTrace();
+		for (StackTraceElement frame : element) {
+
+		}
+		Map<Thread, StackTraceElement[]> stackMap = Thread.getAllStackTraces();
+		for (Thread t : stackMap.keySet()) {
+			StackTraceElement[] frames = stackMap.get(t);
+		}
+	}
 }
