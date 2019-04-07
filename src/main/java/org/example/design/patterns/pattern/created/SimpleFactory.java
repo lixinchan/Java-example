@@ -6,7 +6,7 @@ import org.slf4j.LoggerFactory;
 /**
  * @author clx 2018/10/15.
  */
-public class StaticAbstractFactory {
+public class SimpleFactory {
 
 	public static void main(String[] args) {
 		Staff staff = StaffFactory.getStaff("xxx");
