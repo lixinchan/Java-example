@@ -16,7 +16,7 @@ public class OptionalTest {
 
 	/**
 	 * new Nullable
-	 * 
+	 *
 	 * @param user
 	 * @return
 	 */
@@ -28,13 +28,13 @@ public class OptionalTest {
 		newUser = Optional.ofNullable(user).orElseGet(this::createUser);
 		// return result.getName();
 
-		return Optional.ofNullable(user).map(u -> u.getAddress()).map(a -> a.getProvince())
-				.orElseThrow(() -> new IllegalArgumentException());
+		return Optional.ofNullable(user).map(User::getAddress).map(Address::getProvince)
+				.orElseThrow(IllegalArgumentException::new);
 	}
 
 	/**
 	 * get province
-	 * 
+	 *
 	 * @param user
 	 * @return
 	 */
@@ -45,7 +45,7 @@ public class OptionalTest {
 
 	/**
 	 * original NPE handle method
-	 * 
+	 *
 	 * @param user
 	 * @return
 	 */
@@ -68,7 +68,7 @@ public class OptionalTest {
 
 	/**
 	 * get user
-	 * 
+	 *
 	 * @param user
 	 * @return
 	 */
@@ -95,7 +95,7 @@ public class OptionalTest {
 
 	/**
 	 * create user
-	 * 
+	 *
 	 * @return
 	 */
 	private User createUser() {
