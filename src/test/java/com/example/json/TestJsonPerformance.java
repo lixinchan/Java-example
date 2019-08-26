@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import org.json.JSONObject;
 import org.junit.Test;
 
 import java.io.BufferedReader;
@@ -86,6 +87,12 @@ public class TestJsonPerformance {
 		long startFastjson = System.currentTimeMillis();
 		JSON.toJSONString(templates);
 		System.out.println("Fastjson serialize time:" + (System.currentTimeMillis() - startFastjson));
+
+		long startJson = System.currentTimeMillis();
+		JSONObject.valueToString(templates);
+		System.out.println("Json serialize time:" + (System.currentTimeMillis() - startJson));
+
+
 	}
 
 	private void deserialize(int n) throws IOException {
