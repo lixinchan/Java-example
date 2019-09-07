@@ -4,6 +4,8 @@ import com.alibaba.fastjson.JSON;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import org.apache.commons.collections4.CollectionUtils;
+import org.json.JSONArray;
 import org.json.JSONObject;
 import org.junit.Test;
 
@@ -20,47 +22,54 @@ import java.util.Map;
 /**
  * test jackson gosn fastjson performance
  *
- * @author mf
+ * @author clx
  */
 public class TestJsonPerformance {
 
 	@Test
 	public void testSerialize() throws Exception {
 		System.out.println("100 objects:");
-		serialize(100);
+		serialize(100, 5);
 		System.out.println("500 objects:");
-		serialize(500);
+		serialize(500, 5);
 		System.out.println("1000 objects:");
-		serialize(1000);
+		serialize(1000, 5);
 		System.out.println("5000 objects:");
-		serialize(5000);
+		serialize(5000, 5);
 		System.out.println("10000 objects:");
-		serialize(10000);
+		serialize(10000, 5);
 		System.out.println("50000 objects:");
-		serialize(50000);
+		serialize(50000, 5);
 		System.out.println("100000 objects:");
-		serialize(100000);
+		serialize(100000, 5);
 	}
 
 	@Test
 	public void testDeserialize() throws IOException {
 		System.out.println("100 objects:");
-		deserialize(100);
+		deserialize(100, 5);
 		System.out.println("500 objects:");
-		deserialize(500);
+		deserialize(500, 5);
 		System.out.println("1000 objects:");
-		deserialize(1000);
+		deserialize(1000, 5);
 		System.out.println("5000 objects:");
-		deserialize(5000);
+		deserialize(5000, 5);
 		System.out.println("10000 objects:");
-		deserialize(10000);
+		deserialize(10000, 5);
 		System.out.println("50000 objects:");
-		deserialize(50000);
+		deserialize(50000, 5);
 		System.out.println("100000 objects:");
-		deserialize(100000);
+		deserialize(100000, 5);
 	}
 
-	private void serialize(int n) throws IOException {
+	/**
+	 * serialize
+	 *
+	 * @param n
+	 * @param time
+	 * @throws IOException
+	 */
+	private void serialize(int n, int time) throws IOException {
 		List<Template> templates = new ArrayList<>();
 		for (int idx = 0; idx < n; idx++) {
 			Template template = new Template();
@@ -73,45 +82,121 @@ public class TestJsonPerformance {
 			templates.add(template);
 		}
 
-		long startJackson = System.currentTimeMillis();
-		ObjectMapper mapper = new ObjectMapper();
-		String jacksonResult = mapper.writeValueAsString(templates);
-		System.out.println("Jackson serialize time:" + (System.currentTimeMillis() - startJackson));
-		writeFile(jacksonResult, n);
+		List<Long> timeCosts = new ArrayList<>();
+		for (int idx = 0; idx < time; idx++) {
+			long startJackson = System.currentTimeMillis();
+			ObjectMapper mapper = new ObjectMapper();
+			String jacksonResult = mapper.writeValueAsString(templates);
+			long endJackson = System.currentTimeMillis();
+			timeCosts.add(endJackson - startJackson);
+			writeFile(jacksonResult, n);
 
-		long startGson = System.currentTimeMillis();
-		Gson gson = new GsonBuilder().create();
-		gson.toJson(templates);
-		System.out.println("Gson serialize time:" + (System.currentTimeMillis() - startGson));
+		}
+		System.out.println("Jackson serialize time:" + this.elapsedTime(timeCosts));
 
-		long startFastjson = System.currentTimeMillis();
-		JSON.toJSONString(templates);
-		System.out.println("Fastjson serialize time:" + (System.currentTimeMillis() - startFastjson));
+		timeCosts.clear();
+		for (int idx = 0; idx < time; idx++) {
+			long startGson = System.currentTimeMillis();
+			Gson gson = new GsonBuilder().create();
+			gson.toJson(templates);
+			long endGson = System.currentTimeMillis();
+			timeCosts.add(endGson - startGson);
+		}
+		System.out.println("Gson serialize time:" + this.elapsedTime(timeCosts));
 
-		long startJson = System.currentTimeMillis();
-		JSONObject.valueToString(templates);
-		System.out.println("Json serialize time:" + (System.currentTimeMillis() - startJson));
+		timeCosts.clear();
+		for (int idx = 0; idx < time; idx++) {
+			long startFastjson = System.currentTimeMillis();
+			JSON.toJSONString(templates);
+			long endFashjson = System.currentTimeMillis();
+			timeCosts.add(endFashjson - startFastjson);
+		}
+		System.out.println("Fastjson serialize time:" + this.elapsedTime(timeCosts));
 
-
+		timeCosts.clear();
+		for (int idx = 0; idx < time; idx++) {
+			long startJson = System.currentTimeMillis();
+			JSONObject.valueToString(templates);
+			long endJson = System.currentTimeMillis();
+			timeCosts.add(endJson - startJson);
+		}
+		System.out.println("Json serialize time:" + this.elapsedTime(timeCosts));
 	}
 
-	private void deserialize(int n) throws IOException {
+	/**
+	 * deserialize
+	 *
+	 * @param n
+	 * @param time
+	 * @throws IOException
+	 */
+	private void deserialize(int n, int time) throws IOException {
 		String content = readFile(n);
-		long startJackson = System.currentTimeMillis();
-		ObjectMapper mapper = new ObjectMapper();
-		List<Template> jacksonResult = mapper.readValue(content, List.class);
-		System.out.println("Jackson deserialize time:" + (System.currentTimeMillis() - startJackson) + " size:" + jacksonResult.size());
 
-		long startGson = System.currentTimeMillis();
-		Gson gson = new GsonBuilder().create();
-		List<Template> gsonResult = gson.fromJson(content, List.class);
-		System.out.println("Gson deserialize time:" + (System.currentTimeMillis() - startGson) + " size:" + gsonResult.size());
+		List<Long> timeCosts = new ArrayList<>();
+		for (int idx = 0; idx < time; idx++) {
+			long startJackson = System.currentTimeMillis();
+			ObjectMapper mapper = new ObjectMapper();
+			List<Template> jacksonResult = mapper.readValue(content, List.class);
+			long endJackson = System.currentTimeMillis();
+			timeCosts.add(endJackson - startJackson);
+		}
+		System.out.println("Jackson deserialize time:" + this.elapsedTime(timeCosts));
 
-		long startFastjson = System.currentTimeMillis();
-		List<Template> fastjsonResult = (List<Template>) JSON.parse(content);
-		System.out.println("Fastjson serialize time:" + (System.currentTimeMillis() - startFastjson) + " size:" + fastjsonResult.size());
+		timeCosts.clear();
+		for (int idx = 0; idx < time; idx++) {
+			long startGson = System.currentTimeMillis();
+			Gson gson = new GsonBuilder().create();
+			List<Template> gsonResult = gson.fromJson(content, List.class);
+			long endGson = System.currentTimeMillis();
+			timeCosts.add(endGson - startGson);
+		}
+		System.out.println("Gson deserialize time:" + this.elapsedTime(timeCosts));
+
+		timeCosts.clear();
+		for (int idx = 0; idx < time; idx++) {
+			long startFastjson = System.currentTimeMillis();
+			List<Template> fastjsonResult = (List<Template>) JSON.parse(content);
+			long endFastjson = System.currentTimeMillis();
+			timeCosts.add(endFastjson - startFastjson);
+		}
+		System.out.println("Fastjson deserialize time:" + this.elapsedTime(timeCosts));
+
+		timeCosts.clear();
+		for (int idx = 0; idx < time; idx++) {
+			long starJson = System.currentTimeMillis();
+			List<Object> jsonResult = JsonUtils.toList(new JSONArray(content));
+			long endJson = System.currentTimeMillis();
+			timeCosts.add(endJson - starJson);
+		}
+		System.out.println("Json deserialize time:" + this.elapsedTime(timeCosts));
 	}
 
+	/**
+	 * calculate elapsed time
+	 *
+	 * @param timeCosts
+	 * @return
+	 */
+	private long elapsedTime(List<Long> timeCosts) {
+		if (CollectionUtils.isEmpty(timeCosts)) {
+			return -1;
+		}
+		int size = timeCosts.size();
+		int result = 0;
+		for (long cost : timeCosts) {
+			result += cost;
+		}
+		return result / size;
+	}
+
+	/**
+	 * write file
+	 *
+	 * @param content
+	 * @param prefix
+	 * @throws IOException
+	 */
 	private void writeFile(String content, int prefix) throws IOException {
 		BufferedWriter writer = new BufferedWriter(new FileWriter("./src/test/resources/json/" + prefix + ".json"));
 		writer.write(content);
@@ -119,6 +204,13 @@ public class TestJsonPerformance {
 		writer.close();
 	}
 
+	/**
+	 * read file
+	 *
+	 * @param prefix
+	 * @return
+	 * @throws IOException
+	 */
 	private String readFile(int prefix) throws IOException {
 		BufferedReader reader = new BufferedReader(new FileReader("./src/test/resources/json/" + prefix + ".json"));
 		String result = reader.readLine();
@@ -126,7 +218,9 @@ public class TestJsonPerformance {
 		return result;
 	}
 
-
+	/**
+	 * serialize & deserialize object
+	 */
 	public static class Template {
 		private int id;
 		private String name;
