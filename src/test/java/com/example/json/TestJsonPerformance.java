@@ -30,6 +30,8 @@ public class TestJsonPerformance {
 	public void testSerialize() throws Exception {
 		System.out.println("100 objects:");
 		serialize(100, 5);
+		System.out.println("200 objects:");
+		serialize(200, 5);
 		System.out.println("500 objects:");
 		serialize(500, 5);
 		System.out.println("1000 objects:");
@@ -48,6 +50,8 @@ public class TestJsonPerformance {
 	public void testDeserialize() throws IOException {
 		System.out.println("100 objects:");
 		deserialize(100, 5);
+		System.out.println("200 objects:");
+		deserialize(200, 5);
 		System.out.println("500 objects:");
 		deserialize(500, 5);
 		System.out.println("1000 objects:");
