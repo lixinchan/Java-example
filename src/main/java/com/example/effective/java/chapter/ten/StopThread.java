@@ -1,4 +1,4 @@
-package com.example.effective.java.chapter.tenth;
+package com.example.effective.java.chapter.ten;
 
 import java.util.concurrent.TimeUnit;
 
