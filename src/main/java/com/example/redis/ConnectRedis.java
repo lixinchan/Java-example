@@ -8,9 +8,10 @@ import redis.clients.jedis.Jedis;
 public class ConnectRedis {
 
 	public static void main(String[] args) {
-		Jedis jedis = new Jedis("192.168.11.130", 6379);
-		jedis.auth("clx");
-		System.out.println(jedis.ping());
-		System.out.println(jedis.get("test"));
+		try (Jedis jedis = new Jedis("192.168.11.133", 6379)) {
+			jedis.auth("test");
+			System.out.println(jedis.ping());
+			System.out.println(jedis.get("test"));
+		}
 	}
 }
