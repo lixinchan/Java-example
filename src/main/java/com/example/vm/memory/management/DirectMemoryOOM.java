@@ -1,12 +1,13 @@
 package com.example.vm.memory.management;
 
-import java.lang.reflect.Field;
 
 import sun.misc.Unsafe;
 
+import java.lang.reflect.Field;
+
 /**
  * -Xmx20m -XX:MaxDirectMemorySize=10m
- * 
+ *
  * @author clx 2018/12/17
  */
 public class DirectMemoryOOM {
