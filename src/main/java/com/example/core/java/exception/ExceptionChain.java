@@ -37,7 +37,7 @@ public class ExceptionChain {
 	public static int test3(int n) {
 		try {
 			int retVal = (int) Math.pow(n, n);
-			int val = retVal / 1;
+			int val = retVal / 0;
 			return retVal;
 		} catch (Exception ex) {
 			return 1;
@@ -45,6 +45,7 @@ public class ExceptionChain {
 			if (n == 4) {
 				return 0;
 			}
+			return n;
 		}
 	}
 
@@ -54,17 +55,7 @@ public class ExceptionChain {
 		// Locale.ENGLISH);
 		// Date now = sdf.parse(date);
 		// System.out.println(now);
-		// System.out.println(test3(2));
-
-		System.out.println(Long.toBinaryString(255));
-		System.out.println(Long.toBinaryString(System.currentTimeMillis() / 1000));
-		System.out.println(Long.toBinaryString((System.currentTimeMillis() / 1000) << 20));
-		System.out.println(Long.toBinaryString(((System.currentTimeMillis() / 1000) << 20) | (4095 << 12)));
-		System.out
-				.println(Long.toBinaryString(((System.currentTimeMillis() / 1000) << 20) | (4095 << 12) | (255 << 8)));
-
-		System.out.println(System.currentTimeMillis() / 1000);
-		System.out.println((System.currentTimeMillis() / 1000) % 3600);
+		System.out.println(test3(2));
 	}
 
 	public static void test() {
