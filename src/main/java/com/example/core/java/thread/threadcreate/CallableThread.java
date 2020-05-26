@@ -10,27 +10,27 @@ import java.util.concurrent.Future;
 /**
  * @author clx 3/5/2018
  */
-public class CallableThread implements Callable {
+public class CallableThread implements Callable<String> {
 
 	public static void main(String[] args) throws Exception {
 		ExecutorService pool = Executors.newFixedThreadPool(2);
 
-		List<Future> list = new ArrayList<>();
+		List<Future<?>> list = new ArrayList<>();
 		for (int idx = 0; idx < 2; idx++) {
-			Callable callable = new CallableThread();
-			Future future = pool.submit(callable);
+			Callable<String> callable = new CallableThread();
+			Future<?> future = pool.submit(callable);
 			list.add(future);
 		}
 
 		pool.shutdown();
 
-		for (Future future : list) {
+		for (Future<?> future : list) {
 			System.out.println(future.get().toString());
 		}
 	}
 
 	@Override
-	public Object call() throws Exception {
+	public String call() throws Exception {
 		return "Running...";
 	}
 }

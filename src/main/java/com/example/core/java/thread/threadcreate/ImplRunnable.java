@@ -12,5 +12,8 @@ public class ImplRunnable implements Runnable {
 
 	public static void main(String[] args) {
 		new Thread(new ImplRunnable()).start();
+		new Thread(() -> {
+			System.out.println("...");
+		}).start();
 	}
 }
