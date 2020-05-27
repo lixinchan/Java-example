@@ -14,5 +14,12 @@ public class TestThreadGroup {
 			System.out.println("test thread name:" + Thread.currentThread().getName());
 		});
 		testThread.start();
+
+
+		ThreadGroup threadGroup = new ThreadGroup("tg");
+		threadGroup.setMaxPriority(7);
+		Thread t = new Thread(threadGroup, "t");
+		t.setPriority(9);
+		System.out.println("thread priority:" + t.getPriority());
 	}
 }
