@@ -9,7 +9,7 @@ public class TestThreadStatus {
 		try {
 			new TestThreadStatus().mainThread();
 		} catch (InterruptedException e) {
-			e.printStackTrace();
+			Thread.currentThread().interrupt();
 		}
 	}
 
@@ -41,7 +41,7 @@ public class TestThreadStatus {
 		try {
 			Thread.sleep(2000L);
 		} catch (InterruptedException e) {
-			e.printStackTrace();
+			Thread.currentThread().interrupt();
 		}
 	}
 }
