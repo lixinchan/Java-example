@@ -5,7 +5,7 @@ import java.util.concurrent.Semaphore;
 /**
  * @author clx 3/7/2018
  */
-public class SemaphoreTest {
+public class TestSemaphore {
 
 	public static void main(String[] args) {
 		testSemaphore();

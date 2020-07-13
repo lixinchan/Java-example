@@ -16,7 +16,7 @@ public class TestSumRecursiveTask {
 	private static Random random = new Random();
 
 	public static void main(String[] args) {
-		int[] array = new int[25000000];
+		int[] array = new int[2500000];
 
 		for (int idx = 0; idx < array.length; idx++) {
 			array[idx] = random.nextInt();

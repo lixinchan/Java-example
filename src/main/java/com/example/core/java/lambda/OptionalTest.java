@@ -1,4 +1,4 @@
-package com.example.core.java.newfeatures;
+package com.example.core.java.lambda;
 
 import java.util.Optional;
 
