@@ -1,4 +1,4 @@
-package com.example.core.java.test;
+package com.example.core.java.basic;
 
 import java.lang.instrument.Instrumentation;
 
