@@ -13,19 +13,19 @@ public final class DateUtils {
 	private DateUtils() {
 	}
 
-	public static String defaultDateFormat = "yyyy-MM-dd HH:mm:ss.S";
+	public static final String defaultDateFormat = "yyyy-MM-dd HH:mm:ss.S";
 
-	public static String PATTERN_YMD = "yyyyMMdd";
+	public static final String PATTERN_YMD = "yyyyMMdd";
 
-	public static String PATTERN_YMDHMS = "yyyyMMddHHmmss";
+	public static final String PATTERN_YMDHMS = "yyyyMMddHHmmss";
 
-	public static String PATTERN_Y_M_D_HMS = "yyyy-MM-dd HH:mm:ss";
+	public static final String PATTERN_Y_M_D_HMS = "yyyy-MM-dd HH:mm:ss";
 
-	public static String PATTERN_YMDHMSMS = "yyyyMMddHHmmssSSS";
+	public static final String PATTERN_YMDHMSMS = "yyyyMMddHHmmssSSS";
 
-	public static long DAY_MILLTIMES = 24 * 3600 * 1000;
+	public static final long DAY_MILLTIMES = 24 * 3600 * 1000;
 
-	public static long LOCAL_TIMEZONE_OFFSET = TimeZone.getDefault().getRawOffset();
+	public static final long LOCAL_TIMEZONE_OFFSET = TimeZone.getDefault().getRawOffset();
 
 	private static FastDateFormat getDateFormat(String pattern) {
 		return FastDateFormat.getInstance(pattern);
