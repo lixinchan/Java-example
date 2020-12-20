@@ -12,13 +12,18 @@ import java.util.concurrent.TimeUnit;
  */
 public class BaseThreadPool {
 
+	/**
+	 * template threadPool
+	 *
+	 * @return
+	 */
 	public Executor executor() {
-		int corePoolSize = 0;
-		int maximumPoolSize = 0;
-		long keepAliveTime = 0;
+		int corePoolSize = Runtime.getRuntime().availableProcessors();
+		int maximumPoolSize = corePoolSize * 2;
+		long keepAliveTime = 60;
 		BlockingQueue<Runnable> workQueue = new LinkedBlockingQueue<>(128);
-		String threadPoolName = "";
-		return new BaseThreadPoolExecutor(corePoolSize, maximumPoolSize, keepAliveTime, TimeUnit.MINUTES, workQueue,
+		String threadPoolName = "templateThreadPool";
+		return new BaseThreadPoolExecutor(corePoolSize, maximumPoolSize, keepAliveTime, TimeUnit.SECONDS, workQueue,
 				new BaseThreadPoolConfig.DefaultThreadFactory(threadPoolName), new BaseThreadPoolConfig.CallerRunPolicy());
 	}
 }
