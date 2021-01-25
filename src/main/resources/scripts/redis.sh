@@ -3,7 +3,7 @@ RETVAL="0"
 
 function start() {
   echo "$TAG is starting..."
-  nohup ./bin/$TAG ./config/config/redis_8010/redis.conf >nohup.out &
+  nohup ./bin/$TAG ./config/config/redis_8010/redis.conf > nohup.out &
   sleep 1
   status
 }
