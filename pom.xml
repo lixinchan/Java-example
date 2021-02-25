@@ -217,20 +217,7 @@
             </releases>
             <id>nexus</id>
             <name>nexus-central</name>
-            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+            <url>https://maven.aliyun.com/repository/public</url>
         </repository>
     </repositories>
-
-    <!--<distributionManagement>
-        <snapshotRepository>
-            <id>nexus-snapshot</id>
-            <name>nexus-snapshot-central</name>
-            <url>http://repo1.maven.org/maven2/</url>
-        </snapshotRepository>
-        <repository>
-            <id>nexus-release</id>
-            <name>nexus-central</name>
-            <url>http://repo1.maven.org/maven2/</url>
-        </repository>
-    </distributionManagement>-->
 </project>

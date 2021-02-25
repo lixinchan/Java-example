@@ -1,7 +1,5 @@
 package com.example.core.java.thread.practice;
 
-import com.sun.corba.se.impl.orbutil.ObjectStreamClassUtil_1_3;
-
 import java.util.concurrent.Exchanger;
 
 /**
