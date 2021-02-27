@@ -13,7 +13,7 @@ public final class DateUtils {
 	private DateUtils() {
 	}
 
-	public static final String defaultDateFormat = "yyyy-MM-dd HH:mm:ss.S";
+	public static final String DEFAULT_DATE_FORMAT = "yyyy-MM-dd HH:mm:ss.S";
 
 	public static final String PATTERN_YMD = "yyyyMMdd";
 
@@ -23,7 +23,7 @@ public final class DateUtils {
 
 	public static final String PATTERN_YMDHMSMS = "yyyyMMddHHmmssSSS";
 
-	public static final long DAY_MILLTIMES = 24 * 3600 * 1000;
+	public static final long DAY_MILLIS_TIMES = 24 * 3600 * 1000;
 
 	public static final long LOCAL_TIMEZONE_OFFSET = TimeZone.getDefault().getRawOffset();
 
@@ -125,7 +125,7 @@ public final class DateUtils {
 	 * @return
 	 */
 	public static long getDayBegin(long time, boolean localTimeZone) {
-		time = time - (time % DateUtils.DAY_MILLTIMES);
+		time = time - (time % DateUtils.DAY_MILLIS_TIMES);
 		if (localTimeZone) {
 			time -= DateUtils.LOCAL_TIMEZONE_OFFSET;
 		}
@@ -150,7 +150,7 @@ public final class DateUtils {
 	 * @return
 	 */
 	public static long getDayEnd(long time, boolean localTimeZone) {
-		return DateUtils.getDayBegin(time, localTimeZone) + DateUtils.DAY_MILLTIMES - 1;
+		return DateUtils.getDayBegin(time, localTimeZone) + DateUtils.DAY_MILLIS_TIMES - 1;
 	}
 
 	/**
