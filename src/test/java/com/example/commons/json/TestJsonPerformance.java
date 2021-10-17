@@ -1,4 +1,4 @@
-package com.example.json;
+package com.example.commons.json;
 
 import com.alibaba.fastjson.JSON;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -16,6 +16,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -169,7 +171,7 @@ public class TestJsonPerformance {
 		timeCosts.clear();
 		for (int idx = 0; idx < time; idx++) {
 			long starJson = System.currentTimeMillis();
-			List<Object> jsonResult = JsonUtils.toList(new JSONArray(content));
+			List<Object> jsonResult = toList(new JSONArray(content));
 			long endJson = System.currentTimeMillis();
 			timeCosts.add(endJson - starJson);
 		}
@@ -220,6 +222,52 @@ public class TestJsonPerformance {
 		String result = reader.readLine();
 		reader.close();
 		return result;
+	}
+
+	private static Map<String, Object> jsonToMap(JSONObject json) {
+		Map<String, Object> retMap = new HashMap<>();
+		if (json != JSONObject.NULL) {
+			retMap = toMap(json);
+		}
+		return retMap;
+	}
+
+	private static Map<String, Object> toMap(JSONObject object) {
+		Map<String, Object> map = new HashMap<>();
+		Iterator<String> keysItr = object.keys();
+		while (keysItr.hasNext()) {
+			String key = keysItr.next();
+			Object value = object.get(key);
+			if (value instanceof JSONArray) {
+				value = toList((JSONArray) value);
+			} else if (value instanceof JSONObject) {
+				value = toMap((JSONObject) value);
+			}
+			if (value != JSONObject.NULL) {
+				map.put(key, value);
+			}
+		}
+		return map;
+	}
+
+	private static List<Object> toList(JSONArray array) {
+		List<Object> list = new ArrayList<>();
+		for (int i = 0; i < array.length(); i++) {
+			Object value = array.get(i);
+			if (value == null) {
+				list.add(null);
+			} else {
+				if (value instanceof JSONArray) {
+					value = toList((JSONArray) value);
+				} else if (value instanceof JSONObject) {
+					value = toMap((JSONObject) value);
+				}
+				if (value != JSONObject.NULL) {
+					list.add(value);
+				}
+			}
+		}
+		return list;
 	}
 
 	/**

@@ -1,6 +1,5 @@
-package com.example.json;
+package com.example.commons.json;
 
-import com.example.commons.json.JsonUtils;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
