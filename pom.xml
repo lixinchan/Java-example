@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.example</groupId>
     <artifactId>base-tools</artifactId>
-    <version>${project.version.name}</version>
+    <version>0.01-SNAPSHOT</version>
     <name>base-tools</name>
 
     <description>base-tools</description>
@@ -16,20 +16,20 @@
         </developer>
     </developers>
 
-    <profiles>
-        <profile>
-            <id>release</id>
-            <properties>
-                <project.version.name>0.01</project.version.name>
-            </properties>
-        </profile>
-        <profile>
-            <id>snapshot</id>
-            <properties>
-                <project.version.name>0.01-SNAPSHOT</project.version.name>
-            </properties>
-        </profile>
-    </profiles>
+    <!--        <profiles>-->
+    <!--            <profile>-->
+    <!--                <id>release</id>-->
+    <!--                <properties>-->
+    <!--                    <project.version.name>0.01</project.version.name>-->
+    <!--                </properties>-->
+    <!--            </profile>-->
+    <!--            <profile>-->
+    <!--                <id>snapshot</id>-->
+    <!--                <properties>-->
+    <!--                    <project.version.name>0.01-SNAPSHOT</project.version.name>-->
+    <!--                </properties>-->
+    <!--            </profile>-->
+    <!--        </profiles>-->
 
     <dependencies>
         <!-- commons -->
@@ -46,7 +46,7 @@
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
-            <version>2.7</version>
+            <version>2.11.0</version>
         </dependency>
         <!-- guava -->
         <dependency>
@@ -101,7 +101,7 @@
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
-            <version>2.8.8</version>
+            <version>2.8.9</version>
         </dependency>
         <dependency>
             <groupId>com.alibaba</groupId>
@@ -127,7 +127,7 @@
         <dependency>
             <groupId>io.netty</groupId>
             <artifactId>netty-all</artifactId>
-            <version>4.1.69.Final</version>
+            <version>4.1.70.Final</version>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
