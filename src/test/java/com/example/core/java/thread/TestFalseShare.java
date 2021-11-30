@@ -1,6 +1,8 @@
 package com.example.core.java.thread;
 
 /**
+ * cache line false share
+ *
  * @author clx
  */
 public class TestFalseShare implements Runnable {
