@@ -36,7 +36,7 @@ public class TestFalseShare implements Runnable {
 	private static void runTest() throws InterruptedException {
 		Thread[] threads = new Thread[NUM_THREADS];
 		for (int i = 0; i < threads.length; i++) {
-			threads[i] = new Thread(new FalseShareTest(i));
+			threads[i] = new Thread(new TestFalseShare(i));
 		}
 		for (Thread t : threads) {
 			t.start();
