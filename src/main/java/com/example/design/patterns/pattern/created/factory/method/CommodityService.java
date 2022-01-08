@@ -6,6 +6,7 @@ package com.example.design.patterns.pattern.created.factory.method;
  * @author clx
  */
 public interface CommodityService {
+
 	/**
 	 * lottery draw commodity
 	 *

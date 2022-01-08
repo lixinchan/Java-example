@@ -16,21 +16,6 @@
         </developer>
     </developers>
 
-    <!--        <profiles>-->
-    <!--            <profile>-->
-    <!--                <id>release</id>-->
-    <!--                <properties>-->
-    <!--                    <project.version.name>0.01</project.version.name>-->
-    <!--                </properties>-->
-    <!--            </profile>-->
-    <!--            <profile>-->
-    <!--                <id>snapshot</id>-->
-    <!--                <properties>-->
-    <!--                    <project.version.name>0.01-SNAPSHOT</project.version.name>-->
-    <!--                </properties>-->
-    <!--            </profile>-->
-    <!--        </profiles>-->
-
     <dependencies>
         <!-- commons -->
         <dependency>
@@ -58,7 +43,7 @@
         <dependency>
             <groupId>com.github.ben-manes.caffeine</groupId>
             <artifactId>caffeine</artifactId>
-            <version>3.0.4</version>
+            <version>3.0.5</version>
         </dependency>
         <!-- JDBC -->
         <dependency>
@@ -106,17 +91,17 @@
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
-            <version>1.2.78</version>
+            <version>1.2.79</version>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>2.13.0</version>
+            <version>2.13.1</version>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-annotations</artifactId>
-            <version>2.13.0</version>
+            <version>2.13.1</version>
         </dependency>
         <dependency>
             <groupId>org.json</groupId>
@@ -127,7 +112,7 @@
         <dependency>
             <groupId>io.netty</groupId>
             <artifactId>netty-all</artifactId>
-            <version>4.1.70.Final</version>
+            <version>4.1.72.Final</version>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
