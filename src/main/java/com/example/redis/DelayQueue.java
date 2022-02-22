@@ -6,7 +6,7 @@ import com.google.gson.GsonBuilder;
 import redis.clients.jedis.Jedis;
 
 import java.lang.reflect.Type;
-import java.util.Set;
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -40,11 +40,12 @@ public class DelayQueue<T> {
 
 	public void loop() {
 		while (!Thread.interrupted()) {
-			Set<String> values = jedis.zrangeByScore(queueKey, 0, System.currentTimeMillis(), 0, 1);
+			List<String> values = jedis.zrangeByScore(queueKey, 0, System.currentTimeMillis(), 0, 1);
 			if (values.isEmpty()) {
 				try {
 					Thread.sleep(500);
 				} catch (InterruptedException e) {
+					Thread.currentThread().interrupt();
 					break;
 				}
 				continue;
