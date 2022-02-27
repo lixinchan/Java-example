@@ -11,7 +11,7 @@ import java.util.Set;
  *
  * @author clx 2019-07-11
  */
-public class OptionalTest {
+public class TestOptional {
 
 	public static void main(String[] args) {
 		test();

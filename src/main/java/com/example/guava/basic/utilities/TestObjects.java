@@ -5,7 +5,7 @@ import com.google.common.base.Objects;
 /**
  * @author clx 2019-07-17
  */
-public class ObjectsTest {
+public class TestObjects {
 
 	public static void main(String[] args) {
 		test();
