@@ -1,9 +1,9 @@
 package com.example.design.patterns.pattern.created.prototype;
 
+import java.util.ArrayList;
+
 import com.example.commons.log.LogUtils;
 import com.google.common.collect.Lists;
-
-import java.util.ArrayList;
 
 /**
  * @author clx

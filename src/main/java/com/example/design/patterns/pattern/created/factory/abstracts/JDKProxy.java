@@ -1,11 +1,11 @@
 package com.example.design.patterns.pattern.created.factory.abstracts;
 
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Proxy;
+
 import com.example.design.patterns.pattern.created.factory.abstracts.impl.BjCacheAdapter;
 import com.example.design.patterns.pattern.created.factory.abstracts.impl.CacheServiceImpl;
 import com.example.design.patterns.pattern.created.factory.abstracts.impl.CsCacheAdapter;
-
-import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.Proxy;
 
 /**
  * @author clx
@@ -24,7 +24,7 @@ public class JDKProxy {
 		InvocationHandler invocationHandler = new JDKInvocationHandler(cacheAdapter);
 		ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
 		Class<?>[] interfaces = clazz.getInterfaces();
-		return (T) Proxy.newProxyInstance(classLoader, new Class[]{interfaces[0]}, invocationHandler);
+		return (T) Proxy.newProxyInstance(classLoader, new Class[] { interfaces[0] }, invocationHandler);
 	}
 
 	public static void main(String[] args) {

@@ -16,6 +16,7 @@ public class JDKInvocationHandler implements InvocationHandler {
 
 	@Override
 	public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-		return cacheAdapter.getClass().getMethod(method.getName(), args.getClass().getDeclaredClasses()).invoke(cacheAdapter, args);
+		return cacheAdapter.getClass().getMethod(method.getName(), args.getClass().getDeclaredClasses())
+				.invoke(cacheAdapter, args);
 	}
 }

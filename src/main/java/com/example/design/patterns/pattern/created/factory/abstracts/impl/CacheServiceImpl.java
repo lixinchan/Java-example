@@ -1,8 +1,8 @@
 package com.example.design.patterns.pattern.created.factory.abstracts.impl;
 
-import com.example.design.patterns.pattern.created.factory.abstracts.CacheService;
-
 import java.util.concurrent.TimeUnit;
+
+import com.example.design.patterns.pattern.created.factory.abstracts.CacheService;
 
 /**
  * @author clx
