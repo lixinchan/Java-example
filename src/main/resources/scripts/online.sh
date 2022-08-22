@@ -31,7 +31,7 @@ function set_slb_weight() {
 }
 
 function http_check() {
-  curl -s "http://127.0.0.1:${SERVER_PORT}" | grep welcome
+  curl -s "http://127.0.0.1:${SERVER_PORT}" | grep Welcome
   return $?
 }
 
@@ -75,10 +75,9 @@ function smooth_down() {
   sleep 3s
 }
 
-# See how we were called.
 function start() {
   echo "starting"
-  nohup java "${JAVA_OPS}" -Dappliction=${TAG} -jar ${JAR_DIR}/${JAR_NAME} --spring.profiles.active=${ACTIVE_ENV} >/dev/null &
+  nohup java ${JAVA_OPS} -Dappliction=${TAG} -jar ${JAR_DIR}/${JAR_NAME} --spring.profiles.active=${ACTIVE_ENV} >/dev/null 2>&1 &
   echo "starting..."
 
   sleep 10s
