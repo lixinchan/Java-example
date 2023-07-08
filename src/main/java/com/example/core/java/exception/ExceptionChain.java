@@ -3,7 +3,6 @@ package com.example.core.java.exception;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.text.ParseException;
 import java.util.Map;
 
 /**
@@ -11,7 +10,7 @@ import java.util.Map;
  */
 public class ExceptionChain {
 
-	public void test1() throws Throwable {
+	public static void testOne() throws Throwable {
 		try {
 
 		} catch (Exception ex) {
@@ -21,7 +20,7 @@ public class ExceptionChain {
 		}
 	}
 
-	public void test2() {
+	public static void testTwo() {
 		InputStream in = null;
 		try {
 			try {
@@ -34,12 +33,13 @@ public class ExceptionChain {
 		}
 	}
 
-	public static int test3(int n) {
+	public static int testThree(int n) {
 		try {
 			int retVal = (int) Math.pow(n, n);
+//			System.exit(0);
 			int val = retVal / 0;
-			return retVal;
 		} catch (Exception ex) {
+			System.exit(0);
 			return 1;
 		} finally {
 			if (n == 4) {
@@ -49,16 +49,7 @@ public class ExceptionChain {
 		}
 	}
 
-	public static void main(String[] args) throws ParseException {
-		// String date = "July 28 2015";
-		// SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd",
-		// Locale.ENGLISH);
-		// Date now = sdf.parse(date);
-		// System.out.println(now);
-		System.out.println(test3(2));
-	}
-
-	public static void test() {
+	public static void testFour() {
 		Throwable e = new Throwable();
 		StackTraceElement[] element = e.getStackTrace();
 		for (StackTraceElement frame : element) {
